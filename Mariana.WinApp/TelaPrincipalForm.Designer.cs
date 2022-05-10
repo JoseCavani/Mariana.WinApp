@@ -73,14 +73,15 @@
             // 
             this.TesteMenuItem.Name = "TesteMenuItem";
             this.TesteMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.TesteMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.TesteMenuItem.Size = new System.Drawing.Size(180, 22);
             this.TesteMenuItem.Text = "Teste";
+            this.TesteMenuItem.Click += new System.EventHandler(this.TesteMenuItem_Click);
             // 
             // disciplinaMenuItem
             // 
             this.disciplinaMenuItem.Name = "disciplinaMenuItem";
             this.disciplinaMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.disciplinaMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.disciplinaMenuItem.Size = new System.Drawing.Size(180, 22);
             this.disciplinaMenuItem.Text = "Disciplina";
             this.disciplinaMenuItem.Click += new System.EventHandler(this.disciplinaMenuItem_Click);
             // 
@@ -88,7 +89,7 @@
             // 
             this.materiaMenuItem.Name = "materiaMenuItem";
             this.materiaMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.materiaMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.materiaMenuItem.Size = new System.Drawing.Size(180, 22);
             this.materiaMenuItem.Text = "Materia";
             this.materiaMenuItem.Click += new System.EventHandler(this.materiaMenuItem_Click);
             // 

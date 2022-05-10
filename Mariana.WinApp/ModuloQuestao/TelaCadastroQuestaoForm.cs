@@ -98,7 +98,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
             questao.opcoes = dic;
 
-
+            questao.disciplina = TelaPrincipalForm.Instancia.disciplinaSelecionada;
 
             var resultadoValidacao = GravarRegistro(Questao);
 
@@ -110,6 +110,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
                 DialogResult = DialogResult.None;
             }
+            
         }
 
         private void TelaCadastroQuestaoForm_FormClosing(object sender, FormClosingEventArgs e)

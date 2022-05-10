@@ -19,7 +19,7 @@ namespace Mariana.WinApp.ModuloDisciplina
             this.repositorioDisciplina = repositorioDisciplina;
         }
 
-        public override Disciplina ObtemDisciplinaSelecionada()
+        public override Disciplina ObtemSelecionada()
         {
             var numero = tabelaDisciplinas.ObtemNumeroDisciplinaSelecionado();
 
@@ -28,7 +28,7 @@ namespace Mariana.WinApp.ModuloDisciplina
 
         public override void Editar()
         {
-            Disciplina disciplinaSelecionada = ObtemDisciplinaSelecionada();
+            Disciplina disciplinaSelecionada = ObtemSelecionada();
 
             if (disciplinaSelecionada == null)
             {
@@ -53,7 +53,7 @@ namespace Mariana.WinApp.ModuloDisciplina
 
         public override void Excluir()
         {
-            Disciplina disciplinaSelecionada = ObtemDisciplinaSelecionada();
+            Disciplina disciplinaSelecionada = ObtemSelecionada();
 
             if (disciplinaSelecionada == null)
             {
@@ -90,7 +90,8 @@ namespace Mariana.WinApp.ModuloDisciplina
 
         public override void AtualizarQuestoes()
         {
-            TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal("Questao");
+            TelaPrincipalForm.Instancia.disciplinaSelecionada = ObtemSelecionada();
+            TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
         }
 
         private void CarregarDisciplinas()

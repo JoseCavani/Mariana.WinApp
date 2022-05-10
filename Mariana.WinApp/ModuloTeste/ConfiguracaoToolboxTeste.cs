@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mariana.WinApp.ModuloTeste
 {
-    internal class ConfiguraçãoToolboxTeste : ConfiguracaoToolboxBase
+    internal class ConfiguracaoToolboxTeste : ConfiguracaoToolboxBase
     {
         public override string TipoCadastro => "Controle de Teste";
 

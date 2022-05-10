@@ -1,4 +1,5 @@
 ﻿using Mariana.Dominio.ModuloDisciplina;
+using Mariana.Dominio.ModuloMateria;
 using Mariana.Dominio.ModuloQuestao;
 using Marina.Dominio.Compartilhado;
 using System;
@@ -16,6 +17,7 @@ namespace Mariana.Dominio.ModuloTeste
         public int NumeroQuestoes { get; set ; }
         public List<Questao> Questoes { get ; set ; }
         public Disciplina Disciplina { get ; set; }
+        public Materia Materia { get; set; }
 
 
         public Teste()
@@ -26,7 +28,7 @@ namespace Mariana.Dominio.ModuloTeste
    
         public override void Atualizar(Teste registro)
         {
-            throw new NotImplementedException();
+          
         }
     }
 }

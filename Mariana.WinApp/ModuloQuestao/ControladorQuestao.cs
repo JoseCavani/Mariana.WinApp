@@ -93,9 +93,9 @@ namespace Mariana.WinApp.ModuloQuestao
 
         private void CarregarQuestaos()
         {
-            List<Questao> Questaos = repositorioQuestao.SelecionarTodos();
+            List<Questao> Questaos = repositorioQuestao.SelecionarTodos().Where(x => x.disciplina == TelaPrincipalForm.Instancia.disciplinaSelecionada).ToList();
 
-
+            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = Questaos;
 
             tabelaQuestaos.AtualizarRegistros(Questaos);
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {Questaos.Count} Questaos(s)");
@@ -116,6 +116,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
             return tabelaQuestaos;
         }
+      
     }
 }
 

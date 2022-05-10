@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Mariana.Infra.Arquivos.ModuloTeste
 {
-    internal class RepositorioTesteEmArquivo : RepositorioEmArquivoBase<Teste>, IRepositorioTeste
+    public class RepositorioTesteEmArquivo : RepositorioEmArquivoBase<Teste>, IRepositorioTeste
     {
         public RepositorioTesteEmArquivo(DataContext dataContext) : base(dataContext)
         {
@@ -27,8 +27,4 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
 
 
     }
-}
-
-{
-}
 }

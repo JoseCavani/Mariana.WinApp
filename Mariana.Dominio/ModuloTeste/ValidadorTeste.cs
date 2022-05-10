@@ -11,7 +11,7 @@ namespace Mariana.Dominio.ModuloTeste
     {
         public ValidadorTeste()
         {
-           
+            RuleFor(x => x.Questoes.Count).Equal(x => x.NumeroQuestoes).WithMessage("não ha questoes suficientes com esses criterios");
         }
     }
 }
