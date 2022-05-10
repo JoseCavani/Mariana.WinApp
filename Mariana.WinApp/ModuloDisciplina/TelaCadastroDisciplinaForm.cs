@@ -1,5 +1,5 @@
 ﻿using FluentValidation.Results;
-using Mariana.Dominio.Disciplina;
+using Mariana.Dominio.ModuloDisciplina;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

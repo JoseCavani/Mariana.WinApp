@@ -1,11 +1,12 @@
-﻿using Marina.Dominio.Compartilhado;
+﻿using Mariana.Dominio.ModuloQuestao;
+using Marina.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mariana.Dominio.Disciplina
+namespace Mariana.Dominio.ModuloDisciplina
 {
     public class Disciplina : EntidadeBase<Disciplina>
     {

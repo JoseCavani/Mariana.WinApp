@@ -1,4 +1,4 @@
-﻿using Mariana.Dominio.Disciplina;
+﻿using Mariana.Dominio.ModuloDisciplina;
 using Mariana.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using Mariana.Dominio.Disciplina;
+﻿using Mariana.Dominio.ModuloDisciplina;
 using Mariana.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace Mariana.WinApp.ModuloDisciplina
             this.repositorioDisciplina = repositorioDisciplina;
         }
 
-        private Disciplina ObtemDisciplinaSelecionada()
+        public override Disciplina ObtemDisciplinaSelecionada()
         {
             var numero = tabelaDisciplinas.ObtemNumeroDisciplinaSelecionado();
 
@@ -85,6 +85,12 @@ namespace Mariana.WinApp.ModuloDisciplina
             {
                 CarregarDisciplinas();
             }
+        }
+
+
+        public override void AtualizarQuestoes()
+        {
+            TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal("Questao");
         }
 
         private void CarregarDisciplinas()

@@ -10,14 +10,10 @@
 
         public abstract string TooltipExcluir { get; }
 
-        public virtual string TooltipAdicionarQuestoes { get; }
-
         public virtual string TooltipAtualizarQuestoes { get; }
 
 
         public virtual bool InserirHabilitado { get { return true; } }
-
-        public virtual bool AdicionarQuestoesHabilitado { get { return false; } }
 
         public virtual bool AtualizarQuestoesHabilitado { get { return false; } }
 

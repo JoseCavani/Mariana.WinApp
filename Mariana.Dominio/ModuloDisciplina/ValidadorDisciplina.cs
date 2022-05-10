@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mariana.Dominio.Disciplina
+namespace Mariana.Dominio.ModuloDisciplina
 {
     public class ValidadorDisciplina : AbstractValidator<Disciplina>
     {

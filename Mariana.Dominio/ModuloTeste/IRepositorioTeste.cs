@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mariana.Dominio.ModuloDisciplina
+namespace Mariana.Dominio.ModuloTeste
 {
-    public interface IRepositorioDisciplina : IRepositorio<Disciplina>
+    public interface IRepositorioTeste : IRepositorio<Teste>
     {
     }
 }

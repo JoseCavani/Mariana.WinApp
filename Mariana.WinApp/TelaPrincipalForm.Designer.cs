@@ -38,7 +38,6 @@
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnAdicionarQuestoes = new System.Windows.Forms.ToolStripButton();
             this.btnAtualizarQuestoes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.labelTipoCadastro = new System.Windows.Forms.ToolStripLabel();
@@ -91,6 +90,7 @@
             this.materiaMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.materiaMenuItem.Size = new System.Drawing.Size(144, 22);
             this.materiaMenuItem.Text = "Materia";
+            this.materiaMenuItem.Click += new System.EventHandler(this.materiaMenuItem_Click);
             // 
             // toolbox
             // 
@@ -100,7 +100,6 @@
             this.btnEditar,
             this.btnExcluir,
             this.toolStripSeparator1,
-            this.btnAdicionarQuestoes,
             this.btnAtualizarQuestoes,
             this.toolStripSeparator2,
             this.labelTipoCadastro});
@@ -150,17 +149,6 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 41);
-            // 
-            // btnAdicionarQuestoes
-            // 
-            this.btnAdicionarQuestoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAdicionarQuestoes.Image = global::Mariana.WinApp.Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
-            this.btnAdicionarQuestoes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnAdicionarQuestoes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdicionarQuestoes.Name = "btnAdicionarQuestoes";
-            this.btnAdicionarQuestoes.Padding = new System.Windows.Forms.Padding(5);
-            this.btnAdicionarQuestoes.Size = new System.Drawing.Size(38, 38);
-            this.btnAdicionarQuestoes.Click += new System.EventHandler(this.btnAdicionarQuestoes_Click);
             // 
             // btnAtualizarQuestoes
             // 
@@ -248,7 +236,6 @@
         private System.Windows.Forms.ToolStripStatusLabel labelRodape;
         private System.Windows.Forms.ToolStripMenuItem materiaMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnAdicionarQuestoes;
         private System.Windows.Forms.ToolStripButton btnAtualizarQuestoes;
     }
 }

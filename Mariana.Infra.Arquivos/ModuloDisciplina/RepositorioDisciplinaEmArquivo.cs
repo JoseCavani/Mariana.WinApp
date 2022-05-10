@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Mariana.Dominio.Disciplina;
+using Mariana.Dominio.ModuloDisciplina;
 using Marina.Infra.Arquivos;
 using System;
 using System.Collections.Generic;

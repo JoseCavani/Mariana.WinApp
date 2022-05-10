@@ -5,7 +5,7 @@ namespace Marina.Infra.Arquivos
 {
     public class SerializadorDadosEmJsonDotnet : ISerializador
     {
-        private const string arquivo = @"C:\temp\dados.json";
+        private const string arquivo = @"D:\visual studio files\FilesJunk";
 
         public DataContext CarregarDadosDoArquivo()
         {

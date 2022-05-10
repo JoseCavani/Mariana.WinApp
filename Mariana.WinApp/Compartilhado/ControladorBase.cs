@@ -1,4 +1,5 @@
-﻿using Mariana.WinApp.Compartilhado;
+﻿using Mariana.Dominio.ModuloDisciplina;
+using Mariana.WinApp.Compartilhado;
 using System.Windows.Forms;
 
 namespace Mariana.WinApp.Compartilhado
@@ -9,7 +10,7 @@ namespace Mariana.WinApp.Compartilhado
         public abstract void Editar();
         public abstract void Excluir();
 
-        public virtual void AdicionarQuestoes() { }
+        public virtual Disciplina ObtemDisciplinaSelecionada() { return new Disciplina(); }
 
         public virtual void AtualizarQuestoes() { }
 

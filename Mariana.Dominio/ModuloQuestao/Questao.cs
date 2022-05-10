@@ -1,18 +1,19 @@
-﻿using Marina.Dominio.Compartilhado;
+﻿using Mariana.Dominio.ModuloMateria;
+using Marina.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mariana.Dominio.Disciplina
+namespace Mariana.Dominio.ModuloQuestao
 {
     public class Questao : EntidadeBase<Questao>
     {
-        string questao;
-        Dictionary<string,bool> opcoes = new();
-        Materia materia;
-        int Bimestre;
+        public string questao;
+        public Dictionary<string,bool> opcoes = new();
+        public Materia materia;
+        public  int Bimestre;
 
         public override void Atualizar(Questao registro)
         {
