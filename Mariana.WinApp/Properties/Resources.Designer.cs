@@ -73,6 +73,26 @@ namespace Mariana.WinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_box_FILL0_wght400_GRAD0_opsz241 {
+            get {
+                object obj = ResourceManager.GetObject("check_box_FILL0_wght400_GRAD0_opsz241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_download_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("file_download_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap library_add_FILL0_wght400_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("library_add_FILL0_wght400_GRAD0_opsz24", resourceCulture);
@@ -96,6 +116,16 @@ namespace Mariana.WinApp.Properties {
         internal static System.Drawing.Bitmap outline_delete_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("outline_delete_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_list_alt_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_list_alt_black_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

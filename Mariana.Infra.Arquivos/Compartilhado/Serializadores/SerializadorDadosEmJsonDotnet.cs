@@ -35,21 +35,6 @@ namespace Marina.Infra.Arquivos
 
             File.WriteAllText(arquivo, arquivoJson);
 
-            DocumentCore dc = new DocumentCore();
-
-            foreach (var item in dados.Teste)
-            {
-                dc.Content.End.Insert(item.ToString());
-            }
-          
-            string filePath = @"D:\visual studio files\FilesJunk\dados.pdf";
-
-            dc.Save(filePath, new PdfSaveOptions()
-            {
-                Compliance = PdfCompliance.PDF_A1a,
-                PreserveFormFields = true
-            });
-
 
 
         }

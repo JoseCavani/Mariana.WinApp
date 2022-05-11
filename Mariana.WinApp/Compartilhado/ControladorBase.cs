@@ -1,6 +1,7 @@
 ﻿using Mariana.Dominio.ModuloDisciplina;
 using Mariana.WinApp.Compartilhado;
 using Marina.Dominio.Compartilhado;
+using System;
 using System.Windows.Forms;
 
 namespace Mariana.WinApp.Compartilhado
@@ -18,5 +19,9 @@ namespace Mariana.WinApp.Compartilhado
         public abstract UserControl ObtemListagem();
 
         public abstract ConfiguracaoToolboxBase ObtemConfiguracaoToolbox();
+
+        public virtual void Gabarito() { }
+
+        public virtual void PDF() { }
     }
 }

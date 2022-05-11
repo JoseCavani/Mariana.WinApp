@@ -2,6 +2,7 @@
 using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
 using Mariana.WinApp.Compartilhado;
+using SautinSoft.Document;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,44 @@ namespace Mariana.WinApp.ModuloTeste
         }
 
 
+
+        public override void PDF()
+        {
+            Teste TesteSelecionada = ObtemTesteSelecionada();
+
+            if (TesteSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma Teste primeiro",
+                "Exclusão de Testes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DocumentCore dc = new DocumentCore();
+
+            dc.Content.End.Insert(TesteSelecionada.Titulo + "\n");
+
+            foreach (var questao in TesteSelecionada.Questoes)
+            {
+                dc.Content.End.Insert($"{questao.questao}\n");
+                foreach (var opcao in questao.opcoes)
+                {
+                  dc.Content.End.Insert($"{opcao.Key}\n");
+                }
+            }
+
+
+
+            string filePath = @"D:\visual studio files\FilesJunk\Teste " + TesteSelecionada.Numero + ".pdf";
+
+            dc.Save(filePath, new PdfSaveOptions()
+            {
+                Compliance = PdfCompliance.PDF_A1a,
+                PreserveFormFields = true
+            });
+
+        }
+
+
         public override void AtualizarQuestoes()
         {
             Teste TesteSelecionada = ObtemTesteSelecionada();
@@ -53,6 +92,8 @@ namespace Mariana.WinApp.ModuloTeste
                 
             }
             TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = questaos;
+            TelaPrincipalForm.Instancia.testeAtual = TesteSelecionada;
+            TelaPrincipalForm.Instancia.testeAtivo = true;
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
         }
 
@@ -82,6 +123,47 @@ namespace Mariana.WinApp.ModuloTeste
                 CarregarTestes();
             }
         }
+
+        public override void Gabarito()
+        {
+            Teste TesteSelecionada = ObtemTesteSelecionada();
+
+            if (TesteSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma Teste primeiro",
+                "Exclusão de Testes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DocumentCore dc = new DocumentCore();
+
+            dc.Content.End.Insert(TesteSelecionada.Titulo + "\n");
+
+            foreach (var questao in TesteSelecionada.Questoes)
+            {
+                dc.Content.End.Insert($"{questao.questao}\n");
+                foreach (var opcao in questao.opcoes)
+                {
+                    if (opcao.Value == true)
+                        dc.Content.End.Insert($"{opcao.Key} (CORRETA)\n");
+                    else
+                    dc.Content.End.Insert($"{opcao.Key}\n");
+                }
+            }
+
+
+
+            string filePath = @"D:\visual studio files\FilesJunk\Gabarito Teste " + TesteSelecionada.Numero + ".pdf";
+
+            dc.Save(filePath, new PdfSaveOptions()
+            {
+                Compliance = PdfCompliance.PDF_A1a,
+                PreserveFormFields = true
+            });
+
+
+        }
+
 
         public override void Excluir()
         {

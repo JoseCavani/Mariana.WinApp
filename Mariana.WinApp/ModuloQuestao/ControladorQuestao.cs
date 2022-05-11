@@ -54,6 +54,14 @@ namespace Mariana.WinApp.ModuloQuestao
             {
                 questaos.Remove(QuestaoSelecionada);
                 questaos.Add(tela.Questao);
+
+                if (TelaPrincipalForm.Instancia.testeAtivo)
+                {
+                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Remove(QuestaoSelecionada);
+                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Add(tela.Questao);
+                    TelaPrincipalForm.Instancia.testeAtivo = false;
+                }
+
                 CarregarQuestaos();
             }
         }
@@ -76,6 +84,11 @@ namespace Mariana.WinApp.ModuloQuestao
             {
                 questaos.Remove(QuestaoSelecionada);
                 repositorioQuestao.Excluir(QuestaoSelecionada);
+
+                if (TelaPrincipalForm.Instancia.testeAtivo)
+                {
+                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Remove(QuestaoSelecionada);
+                }
                 CarregarQuestaos();
             }
         }
@@ -92,7 +105,11 @@ namespace Mariana.WinApp.ModuloQuestao
             if (resultado == DialogResult.OK)
             {
                 questaos.Add(tela.Questao);
-                CarregarQuestaos();
+                if (TelaPrincipalForm.Instancia.testeAtivo) 
+                {
+                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Add(tela.Questao);
+                }
+                 CarregarQuestaos();
             }
         }
 

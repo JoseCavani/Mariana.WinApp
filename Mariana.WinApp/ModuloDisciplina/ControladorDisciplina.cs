@@ -68,7 +68,10 @@ namespace Mariana.WinApp.ModuloDisciplina
 
             if (resultado == DialogResult.OK)
             {
-                repositorioDisciplina.Excluir(disciplinaSelecionada);
+                var validation = repositorioDisciplina.Excluir(disciplinaSelecionada);
+
+                if (validation.Errors.Count > 0)
+                    MessageBox.Show(validation.Errors[0].ToString());
                 CarregarDisciplinas();
             }
         }

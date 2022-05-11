@@ -1,5 +1,6 @@
 ﻿using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloMateria;
+using Mariana.Dominio.ModuloTeste;
 using Mariana.Infra.Arquivos.ModuloDisciplina;
 using Mariana.Infra.Arquivos.ModuloMateria;
 using Mariana.Infra.Arquivos.ModuloQuestao;
@@ -29,6 +30,11 @@ namespace Mariana.WinApp
         private Dictionary<string, ControladorBase> controladores;
         private DataContext contextoDados;
         public  Disciplina disciplinaSelecionada = new();
+
+        public Teste testeAtual = new();
+
+        public bool testeAtivo = false;
+
         public TelaPrincipalForm(DataContext contextoDados)
         {
             InitializeComponent();
@@ -60,10 +66,12 @@ namespace Mariana.WinApp
 
         private void materiaMenuItem_Click(object sender, EventArgs e)
         {
+            testeAtivo = false;
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
         private void disciplinaMenuItem_Click(object sender, EventArgs e)
         {
+            testeAtivo = false;
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
      
@@ -87,7 +95,15 @@ namespace Mariana.WinApp
             controlador.AtualizarQuestoes();
         }
 
-       
+        private void toolStripButtonGabarito_Click(object sender, EventArgs e)
+        {
+            controlador.Gabarito();
+        }
+        private void toolStripButtonPDF_Click(object sender, EventArgs e)
+        {
+            controlador.PDF();
+        }
+
 
         private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
         {
@@ -95,6 +111,8 @@ namespace Mariana.WinApp
             btnEditar.Enabled = configuracao.EditarHabilitado;
             btnExcluir.Enabled = configuracao.ExcluirHabilitado;
             btnAtualizarQuestoes.Enabled = configuracao.AtualizarQuestoesHabilitado;
+            toolStripButtonGabarito.Enabled = configuracao.GabaritoHabilitado;
+            toolStripButtonPDF.Enabled = configuracao.PDFHabilitado;
         }
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
@@ -103,6 +121,8 @@ namespace Mariana.WinApp
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
             btnAtualizarQuestoes.ToolTipText = configuracao.TooltipAtualizarQuestoes;
+            toolStripButtonGabarito.ToolTipText = configuracao.TooltipGabarito;
+            toolStripButtonPDF.ToolTipText = configuracao.TooltipPDF;
         }
 
         /// <summary>
@@ -193,12 +213,12 @@ namespace Mariana.WinApp
             AtualizarRodape("");
 
             var listagemControl = controlador.ObtemListagem();
-            Thread.Sleep(100);
 
             panelRegistros.Controls.Clear();
 
             listagemControl.Dock = DockStyle.Fill;
 
+            Thread.Sleep(100);
             panelRegistros.Controls.Add(listagemControl);
         }
 
@@ -233,8 +253,9 @@ namespace Mariana.WinApp
 
             controladores.Add("Teste", new ControladorTeste(repositorioTeste));
         }
-
-    
+      
     }
 }
 
+//toDO
+//3º bug hunting

@@ -39,6 +39,8 @@
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAtualizarQuestoes = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonGabarito = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPDF = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.labelTipoCadastro = new System.Windows.Forms.ToolStripLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
@@ -73,7 +75,7 @@
             // 
             this.TesteMenuItem.Name = "TesteMenuItem";
             this.TesteMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.TesteMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.TesteMenuItem.Size = new System.Drawing.Size(144, 22);
             this.TesteMenuItem.Text = "Teste";
             this.TesteMenuItem.Click += new System.EventHandler(this.TesteMenuItem_Click);
             // 
@@ -81,7 +83,7 @@
             // 
             this.disciplinaMenuItem.Name = "disciplinaMenuItem";
             this.disciplinaMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.disciplinaMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.disciplinaMenuItem.Size = new System.Drawing.Size(144, 22);
             this.disciplinaMenuItem.Text = "Disciplina";
             this.disciplinaMenuItem.Click += new System.EventHandler(this.disciplinaMenuItem_Click);
             // 
@@ -89,7 +91,7 @@
             // 
             this.materiaMenuItem.Name = "materiaMenuItem";
             this.materiaMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.materiaMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.materiaMenuItem.Size = new System.Drawing.Size(144, 22);
             this.materiaMenuItem.Text = "Materia";
             this.materiaMenuItem.Click += new System.EventHandler(this.materiaMenuItem_Click);
             // 
@@ -102,6 +104,8 @@
             this.btnExcluir,
             this.toolStripSeparator1,
             this.btnAtualizarQuestoes,
+            this.toolStripButtonGabarito,
+            this.toolStripButtonPDF,
             this.toolStripSeparator2,
             this.labelTipoCadastro});
             this.toolbox.Location = new System.Drawing.Point(0, 24);
@@ -154,13 +158,34 @@
             // btnAtualizarQuestoes
             // 
             this.btnAtualizarQuestoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAtualizarQuestoes.Image = global::Mariana.WinApp.Properties.Resources.check_box_FILL0_wght400_GRAD0_opsz24;
+            this.btnAtualizarQuestoes.Image = global::Mariana.WinApp.Properties.Resources.outline_list_alt_black_24dp;
             this.btnAtualizarQuestoes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnAtualizarQuestoes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAtualizarQuestoes.Name = "btnAtualizarQuestoes";
             this.btnAtualizarQuestoes.Padding = new System.Windows.Forms.Padding(5);
             this.btnAtualizarQuestoes.Size = new System.Drawing.Size(38, 38);
             this.btnAtualizarQuestoes.Click += new System.EventHandler(this.btnAtualizarQuestoes_Click);
+            // 
+            // toolStripButtonGabarito
+            // 
+            this.toolStripButtonGabarito.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonGabarito.Image = global::Mariana.WinApp.Properties.Resources.check_box_FILL0_wght400_GRAD0_opsz241;
+            this.toolStripButtonGabarito.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonGabarito.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGabarito.Name = "toolStripButtonGabarito";
+            this.toolStripButtonGabarito.Size = new System.Drawing.Size(28, 38);
+            this.toolStripButtonGabarito.Text = "toolStripButton1";
+            this.toolStripButtonGabarito.Click += new System.EventHandler(this.toolStripButtonGabarito_Click);
+            // 
+            // toolStripButtonPDF
+            // 
+            this.toolStripButtonPDF.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPDF.Image = global::Mariana.WinApp.Properties.Resources.file_download_FILL0_wght400_GRAD0_opsz48;
+            this.toolStripButtonPDF.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPDF.Name = "toolStripButtonPDF";
+            this.toolStripButtonPDF.Size = new System.Drawing.Size(23, 38);
+            this.toolStripButtonPDF.Text = "toolStripButtonPDF";
+            this.toolStripButtonPDF.Click += new System.EventHandler(this.toolStripButtonPDF_Click);
             // 
             // toolStripSeparator2
             // 
@@ -238,5 +263,7 @@
         private System.Windows.Forms.ToolStripMenuItem materiaMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnAtualizarQuestoes;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGabarito;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPDF;
     }
 }

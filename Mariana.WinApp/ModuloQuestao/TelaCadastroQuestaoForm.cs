@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValidationResult = FluentValidation.Results.ValidationResult;
+using Mariana.WinApp.Compartilhado;
 
 namespace Mariana.WinApp.ModuloQuestao
 {
@@ -96,7 +97,7 @@ namespace Mariana.WinApp.ModuloQuestao
                 }
             }
 
-            questao.opcoes = dic;
+            questao.opcoes = dic.Shuffle();
 
             var resultadoValidacao = GravarRegistro(Questao);
 
@@ -123,9 +124,9 @@ namespace Mariana.WinApp.ModuloQuestao
 
         private void buttonGravarAlternativas_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxAlternativas.Text))
+            if (string.IsNullOrWhiteSpace(textBoxAlternativas.Text) || checkedListBoxAlternativas.Items.Contains(textBoxAlternativas.Text))
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape("CAMPO VAZIO");
+                TelaPrincipalForm.Instancia.AtualizarRodape("Campo vazio ou ja existente");
                 return;
             }
             checkedListBoxAlternativas.Items.Add(textBoxAlternativas.Text);

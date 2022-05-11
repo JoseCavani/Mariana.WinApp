@@ -12,6 +12,10 @@
 
         public virtual string TooltipAtualizarQuestoes { get; }
 
+        public virtual string TooltipGabarito { get; }
+
+        public virtual string TooltipPDF { get; }
+
 
         public virtual bool InserirHabilitado { get { return true; } }
 
@@ -20,5 +24,9 @@
         public virtual bool EditarHabilitado { get { return true; } }
 
         public virtual bool ExcluirHabilitado { get { return true; } }
+
+        public virtual bool GabaritoHabilitado { get { return false; } }
+
+        public virtual bool PDFHabilitado { get { return false; } }
     }
 }

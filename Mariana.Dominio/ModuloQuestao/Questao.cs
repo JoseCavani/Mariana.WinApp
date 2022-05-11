@@ -12,7 +12,7 @@ namespace Mariana.Dominio.ModuloQuestao
     public class Questao : EntidadeBase<Questao>
     {
         public string questao;
-        public Dictionary<string,bool> opcoes;
+        public Dictionary<string,bool> opcoes = new();
         public Materia materia;
         public  int Bimestre;
 

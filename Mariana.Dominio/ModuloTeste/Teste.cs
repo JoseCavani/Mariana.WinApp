@@ -22,7 +22,7 @@ namespace Mariana.Dominio.ModuloTeste
 
         public Teste()
         {
-
+            Data = DateTime.Now;
         }
 
         public override string ToString()

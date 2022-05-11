@@ -19,7 +19,14 @@ namespace Mariana.WinApp.ModuloTeste
 
         public override string TooltipAtualizarQuestoes => "Atualizar Questao do Teste";
 
+        public override string TooltipGabarito => "Fazer um PDF dos gabaritos";
+
+        public override string TooltipPDF => "Biaxar um PDF das questoes";
+
         public override bool AtualizarQuestoesHabilitado => true;
+
+        public override bool GabaritoHabilitado => true;
+        public override bool PDFHabilitado => true;
 
     }
 }
