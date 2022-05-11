@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
 using Marina.Dominio.Compartilhado;
@@ -15,6 +16,11 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
     {
         public RepositorioTesteEmArquivo(DataContext dataContext) : base(dataContext)
         {
+        }
+
+        public List<Disciplina> ObterDiscplinas()
+        {
+           return dataContext.Disciplinas;
         }
 
         public override List<Teste> ObterRegistros()

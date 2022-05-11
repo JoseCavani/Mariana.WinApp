@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Mariana.Dominio.ModuloDisciplina;
+using Mariana.Dominio.ModuloQuestao;
 using Marina.Infra.Arquivos;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
         public override AbstractValidator<Disciplina> ObterValidador()
         {
             return new ValidadorDisciplina();
+        }
+
+        public List<Questao> SelecionarQuestoes()
+        {
+            return dataContext.Questoes;
         }
     }
 }

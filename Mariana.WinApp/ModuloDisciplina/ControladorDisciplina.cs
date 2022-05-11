@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -88,9 +89,17 @@ namespace Mariana.WinApp.ModuloDisciplina
         }
         public override void AtualizarQuestoes()
         {
-            TelaPrincipalForm.Instancia.disciplinaSelecionada = ObtemSelecionada();
+            Disciplina disciplinaSelecionada = ObtemSelecionada();
+
+            if (disciplinaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma disciplina primeiro",
+                "Questoes de Disciplinas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TelaPrincipalForm.Instancia.disciplinaSelecionada = disciplinaSelecionada;
             TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = repositorioDisciplina.SelecionarQuestoes().Where(x => x.materia.Disciplina == TelaPrincipalForm.Instancia.disciplinaSelecionada).ToList();
-            //TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = ObtemSelecionada().questoes.Where(x => x.materia.Disciplina == TelaPrincipalForm.Instancia.disciplinaSelecionada).ToList();
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
         }
 

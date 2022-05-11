@@ -25,7 +25,22 @@ namespace Mariana.Dominio.ModuloTeste
 
         }
 
-   
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(Titulo);
+
+            foreach (var item in Questoes)
+            {
+                sb.AppendLine(item.ToString());
+            }
+
+
+            return sb.ToString();
+                
+        }
+
         public override void Atualizar(Teste registro)
         {
           

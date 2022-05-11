@@ -1,4 +1,5 @@
 ﻿using Mariana.Dominio.ModuloDisciplina;
+using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
 using Mariana.WinApp.Compartilhado;
 using System;
@@ -16,10 +17,10 @@ namespace Mariana.WinApp.ModuloTeste
         private TabelaTesteControl tabelaTestes;
         private List<Disciplina> disciplinas;
 
-        public ControladorTeste(IRepositorioTeste repositorioTeste, List<Disciplina> disciplinas)
+        public ControladorTeste(IRepositorioTeste repositorioTeste)
         {
             this.repositorioTeste = repositorioTeste;
-            this.disciplinas = disciplinas;
+            this.disciplinas = repositorioTeste.ObterDiscplinas();
         }
 
         private Teste ObtemTesteSelecionada()
@@ -32,12 +33,26 @@ namespace Mariana.WinApp.ModuloTeste
 
         public override void AtualizarQuestoes()
         {
+            Teste TesteSelecionada = ObtemTesteSelecionada();
+
+            if (TesteSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma Teste primeiro",
+                "Questoes dos Testes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TelaPrincipalForm.Instancia.disciplinaSelecionada = TesteSelecionada.Disciplina;
+
+            List<Questao> questaos = new();
 
             foreach (var item in repositorioTeste.SelecionarQuestoes())
             {
-                klasjhdjkashdskaj
+                if(TesteSelecionada.Questoes.Contains(item))
+                    questaos.Add(item);
+                
             }
-            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = repositorioTeste.SelecionarQuestoes();
+            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = questaos;
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
         }
 

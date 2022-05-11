@@ -17,6 +17,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,7 +28,7 @@ namespace Mariana.WinApp
         private ControladorBase controlador;
         private Dictionary<string, ControladorBase> controladores;
         private DataContext contextoDados;
-        public  Disciplina disciplinaSelecionada;
+        public  Disciplina disciplinaSelecionada = new();
         public TelaPrincipalForm(DataContext contextoDados)
         {
             InitializeComponent();
@@ -192,6 +193,7 @@ namespace Mariana.WinApp
             AtualizarRodape("");
 
             var listagemControl = controlador.ObtemListagem();
+            Thread.Sleep(100);
 
             panelRegistros.Controls.Clear();
 
@@ -203,12 +205,14 @@ namespace Mariana.WinApp
 
         private void IniciaControladorQuestao(List<Materia> materias)
         {
+
+            var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
             if (!controladores.ContainsKey("Questao"))
             {
-                var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
 
                 controladores.Add("Questao", new ControladorQuestao(repositorioQuestao, materias));
             }
+            controladores["Questao"] = new ControladorQuestao(repositorioQuestao, materias);
         }
 
         private void InicializarControladores()
@@ -225,9 +229,9 @@ namespace Mariana.WinApp
 
             controladores.Add("Disciplina", new ControladorDisciplina(repositorioDisciplina));
 
-            controladores.Add("Materia", new ControladorMateria(repositorioMateria, contextoDados.Disciplinas));
+            controladores.Add("Materia", new ControladorMateria(repositorioMateria));
 
-            controladores.Add("Teste", new ControladorTeste(repositorioTeste, contextoDados.Disciplinas));
+            controladores.Add("Teste", new ControladorTeste(repositorioTeste));
         }
 
     

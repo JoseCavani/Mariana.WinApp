@@ -12,9 +12,23 @@ namespace Mariana.Dominio.ModuloQuestao
     public class Questao : EntidadeBase<Questao>
     {
         public string questao;
-        public Dictionary<string,bool> opcoes = new();
+        public Dictionary<string,bool> opcoes;
         public Materia materia;
         public  int Bimestre;
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(questao);
+
+            foreach (var item in opcoes)
+            {
+                sb.AppendLine(item.Key);
+            }
+
+            return sb.ToString();
+        }
 
         public override void Atualizar(Questao registro)
         {

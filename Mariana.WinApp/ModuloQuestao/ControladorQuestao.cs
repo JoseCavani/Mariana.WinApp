@@ -16,6 +16,7 @@ namespace Mariana.WinApp.ModuloQuestao
         private IRepositorioQuestao repositorioQuestao;
         private TabelaQuestaoControl tabelaQuestaos;
         private List<Materia> materias;
+        private List<Questao> questaos = new();
 
         public ControladorQuestao(IRepositorioQuestao repositorioQuestao, List<Materia> materias)
         {
@@ -51,6 +52,8 @@ namespace Mariana.WinApp.ModuloQuestao
 
             if (resultado == DialogResult.OK)
             {
+                questaos.Remove(QuestaoSelecionada);
+                questaos.Add(tela.Questao);
                 CarregarQuestaos();
             }
         }
@@ -71,6 +74,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
             if (resultado == DialogResult.OK)
             {
+                questaos.Remove(QuestaoSelecionada);
                 repositorioQuestao.Excluir(QuestaoSelecionada);
                 CarregarQuestaos();
             }
@@ -87,18 +91,17 @@ namespace Mariana.WinApp.ModuloQuestao
 
             if (resultado == DialogResult.OK)
             {
+                questaos.Add(tela.Questao);
                 CarregarQuestaos();
             }
         }
 
         private void CarregarQuestaos()
         {
-            List<Questao> Questaos = TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes;
+         
 
-            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = Questaos;
-
-            tabelaQuestaos.AtualizarRegistros(Questaos);
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {Questaos.Count} Questaos(s)");
+            tabelaQuestaos.AtualizarRegistros(questaos);
+            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {questaos.Count} Questaos(s)");
         }
 
 
@@ -111,6 +114,11 @@ namespace Mariana.WinApp.ModuloQuestao
         {
             if (tabelaQuestaos == null)
                 tabelaQuestaos = new TabelaQuestaoControl();
+
+
+            questaos = TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes;
+
+            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = questaos;
 
             CarregarQuestaos();
 

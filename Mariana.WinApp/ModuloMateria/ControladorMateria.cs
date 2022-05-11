@@ -16,10 +16,10 @@ namespace Mariana.WinApp.ModuloMateria
         private TabelaMateriaControl tabelaMaterias;
         private List<Disciplina> disciplinas;
 
-        public ControladorMateria(IRepositorioMateria repositorioMateria,List<Disciplina> disciplinas)
+        public ControladorMateria(IRepositorioMateria repositorioMateria)
         {
             this.repositorioMateria = repositorioMateria;
-            this.disciplinas = disciplinas;
+            this.disciplinas = repositorioMateria.ObterDisciplinas();
         }
 
         private Materia ObtemMateriaSelecionada()

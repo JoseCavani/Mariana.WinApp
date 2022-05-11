@@ -14,8 +14,6 @@ namespace Marina.Dominio.Compartilhado
 
         List<T> SelecionarTodos();
 
-        List<Questao> SelecionarQuestoes();
-
         T SelecionarPorNumero(int numero);
     }
 }

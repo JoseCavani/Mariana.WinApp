@@ -123,6 +123,11 @@ namespace Mariana.WinApp.ModuloQuestao
 
         private void buttonGravarAlternativas_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBoxAlternativas.Text))
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("CAMPO VAZIO");
+                return;
+            }
             checkedListBoxAlternativas.Items.Add(textBoxAlternativas.Text);
         }
     }
