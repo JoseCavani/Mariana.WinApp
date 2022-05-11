@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using Mariana.Dominio.ModuloQuestao;
 using System.Collections.Generic;
 
 namespace Marina.Dominio.Compartilhado
@@ -12,6 +13,8 @@ namespace Marina.Dominio.Compartilhado
         ValidationResult Excluir(T registro);
 
         List<T> SelecionarTodos();
+
+        List<Questao> SelecionarQuestoes();
 
         T SelecionarPorNumero(int numero);
     }

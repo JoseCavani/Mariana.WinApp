@@ -86,11 +86,10 @@ namespace Mariana.WinApp.ModuloDisciplina
                 CarregarDisciplinas();
             }
         }
-
-
         public override void AtualizarQuestoes()
         {
-            TelaPrincipalForm.Instancia.disciplinaSelecionada = ObtemSelecionada();
+            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = repositorioDisciplina.SelecionarQuestoes();
+            //TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = ObtemSelecionada().questoes.Where(x => x.materia.Disciplina == TelaPrincipalForm.Instancia.disciplinaSelecionada).ToList();
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
         }
 

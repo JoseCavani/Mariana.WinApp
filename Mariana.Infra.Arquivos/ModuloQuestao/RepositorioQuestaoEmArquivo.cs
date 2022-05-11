@@ -26,6 +26,9 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
             return new ValidadorQuestao();
         }
 
-    
+        public List<Questao> SelecionarQuestoes()
+        {
+            return dataContext.Questoes;
+        }
     }
 }

@@ -93,7 +93,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
         private void CarregarQuestaos()
         {
-            List<Questao> Questaos = repositorioQuestao.SelecionarTodos().Where(x => x.disciplina == TelaPrincipalForm.Instancia.disciplinaSelecionada).ToList();
+            List<Questao> Questaos = TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes;
 
             TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = Questaos;
 

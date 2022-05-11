@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
+using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
+using Marina.Dominio.Compartilhado;
 using Marina.Infra.Arquivos;
 using System;
 using System.Collections.Generic;
@@ -20,11 +22,15 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
             return dataContext.Teste;
         }
 
+
         public override AbstractValidator<Teste> ObterValidador()
         {
             return new ValidadorTeste();
         }
 
-
+        public List<Questao> SelecionarQuestoes()
+        {
+            return dataContext.Questoes; 
+        }
     }
 }

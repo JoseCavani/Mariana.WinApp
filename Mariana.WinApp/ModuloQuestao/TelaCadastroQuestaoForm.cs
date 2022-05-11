@@ -98,8 +98,6 @@ namespace Mariana.WinApp.ModuloQuestao
 
             questao.opcoes = dic;
 
-            questao.disciplina = TelaPrincipalForm.Instancia.disciplinaSelecionada;
-
             var resultadoValidacao = GravarRegistro(Questao);
 
             if (resultadoValidacao.IsValid == false)

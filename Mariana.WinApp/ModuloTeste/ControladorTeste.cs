@@ -32,10 +32,8 @@ namespace Mariana.WinApp.ModuloTeste
 
         public override void AtualizarQuestoes()
         {
-
-            TelaPrincipalForm.Instancia.disciplinaSelecionada = ObtemTesteSelecionada().Disciplina;
+            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = repositorioTeste.SelecionarQuestoes();
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
-          
         }
 
         public override void Editar()

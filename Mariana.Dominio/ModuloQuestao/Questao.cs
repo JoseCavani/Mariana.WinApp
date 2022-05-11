@@ -15,7 +15,6 @@ namespace Mariana.Dominio.ModuloQuestao
         public Dictionary<string,bool> opcoes = new();
         public Materia materia;
         public  int Bimestre;
-        public Disciplina disciplina;
 
         public override void Atualizar(Questao registro)
         {

@@ -86,14 +86,24 @@ namespace Mariana.WinApp.ModuloTeste
             teste.NumeroQuestoes = (int)numericUpDownQuantidade.Value;
 
 
-
-            teste.Questoes = teste.Disciplina.questoes.Where(x => x.materia == teste.Materia)
-                .ToList()
-                .OrderBy(x => rnd.Next())
+            if (comboBoxMateria.SelectedItem.ToString() == "Todos")
+            {
+                teste.Questoes = teste.Disciplina.questoes
+                 .OrderBy(x => rnd.Next())
                 .Take(teste.NumeroQuestoes)
                 .ToList();
+            }
 
+            else
+            {
+                teste.Questoes = teste.Disciplina.questoes.Where(x => x.materia == teste.Materia)
+                    .ToList()
+                    .OrderBy(x => rnd.Next())
+                    .Take(teste.NumeroQuestoes)
+                    .ToList();
+            }
 
+          
             teste.Titulo = txtTitulo.Text;
 
 
@@ -128,6 +138,8 @@ namespace Mariana.WinApp.ModuloTeste
           
                 foreach (var questao in disciplina.questoes)
                 {
+                if (comboBoxMateria.Items.Contains(questao.materia))
+                    continue;
                     comboBoxMateria.Items.Add(questao.materia);
                 }
             
