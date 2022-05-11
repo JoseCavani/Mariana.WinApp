@@ -32,6 +32,11 @@ namespace Mariana.WinApp.ModuloTeste
 
         public override void AtualizarQuestoes()
         {
+
+            foreach (var item in repositorioTeste.SelecionarQuestoes())
+            {
+                klasjhdjkashdskaj
+            }
             TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = repositorioTeste.SelecionarQuestoes();
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
         }
