@@ -3,6 +3,7 @@ using Mariana.Dominio.ModuloMateria;
 using Mariana.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,12 +66,11 @@ namespace Mariana.WinApp.ModuloMateria
                 return;
             }
 
+            Stream str = Properties.Resources.silvio_santos_esta_certo_disso;
 
+            System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
+            snd.Play();
 
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-
-            player.SoundLocation = @"D:\visual studio files\winform\MarianaNova\Mariana.WinApp\Resources\silvio-santos-esta-certo-disso.wav";
-            player.Play();
 
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Materia?",
                 "Exclusão de Materia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

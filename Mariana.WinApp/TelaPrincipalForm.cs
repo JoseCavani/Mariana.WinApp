@@ -257,5 +257,3 @@ namespace Mariana.WinApp
     }
 }
 
-//toDO
-//3º bug hunting
