@@ -65,8 +65,16 @@ namespace Mariana.WinApp.ModuloMateria
                 return;
             }
 
+
+
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+
+            player.SoundLocation = @"D:\visual studio files\winform\MarianaNova\Mariana.WinApp\Resources\silvio-santos-esta-certo-disso.wav";
+            player.Play();
+
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Materia?",
                 "Exclusão de Materia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
 
             if (resultado == DialogResult.OK)
             {
