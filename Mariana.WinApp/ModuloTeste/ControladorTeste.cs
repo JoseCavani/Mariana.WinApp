@@ -46,7 +46,7 @@ namespace Mariana.WinApp.ModuloTeste
             DocumentCore dc = new DocumentCore();
 
             dc.Content.End.Insert(TesteSelecionada.Titulo + "\n");
-
+            dc.Content.End.Insert("-------------------------------------------------\n");
             foreach (var questao in TesteSelecionada.Questoes)
             {
                 dc.Content.End.Insert($"{questao.Titulo}\n");
@@ -54,6 +54,7 @@ namespace Mariana.WinApp.ModuloTeste
                 {
                   dc.Content.End.Insert($"{opcao.Key}\n");
                 }
+                dc.Content.End.Insert("-------------------------------------------------\n");
             }
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Teste"
@@ -136,7 +137,7 @@ namespace Mariana.WinApp.ModuloTeste
             DocumentCore dc = new DocumentCore();
 
             dc.Content.End.Insert(TesteSelecionada.Titulo + "\n");
-
+            dc.Content.End.Insert("-------------------------------------------------\n");
             foreach (var questao in TesteSelecionada.Questoes)
             {
                 dc.Content.End.Insert($"{questao.Titulo}\n");
@@ -147,6 +148,7 @@ namespace Mariana.WinApp.ModuloTeste
                     else
                     dc.Content.End.Insert($"{opcao.Key}\n");
                 }
+                dc.Content.End.Insert("-------------------------------------------------\n");
             }
 
 
