@@ -98,10 +98,12 @@ namespace Mariana.WinApp
         private void toolStripButtonGabarito_Click(object sender, EventArgs e)
         {
             controlador.Gabarito();
+            AtualizarRodape("PDF gerado nos documentos");
         }
         private void toolStripButtonPDF_Click(object sender, EventArgs e)
         {
             controlador.PDF();
+            AtualizarRodape("PDF gerado nos documentos");
         }
 
 
