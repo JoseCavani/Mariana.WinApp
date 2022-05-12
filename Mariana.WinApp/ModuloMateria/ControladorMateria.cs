@@ -66,10 +66,7 @@ namespace Mariana.WinApp.ModuloMateria
                 return;
             }
 
-            Stream str = Properties.Resources.silvio_santos_esta_certo_disso1;
-
-            System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
-            snd.Play();
+       
 
 
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Materia?",
