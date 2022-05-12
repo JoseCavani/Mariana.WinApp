@@ -43,7 +43,7 @@ namespace Mariana.WinApp.ModuloMateria
 
             TelaCadastroMateriaForm tela = new TelaCadastroMateriaForm(disciplinas);
 
-            tela.Materia = MateriaSelecionada;
+            tela.Materia = (Materia)MateriaSelecionada.Clone();
 
             tela.GravarRegistro = repositorioMateria.Editar;
 
@@ -66,7 +66,7 @@ namespace Mariana.WinApp.ModuloMateria
                 return;
             }
 
-            Stream str = Properties.Resources.silvio_santos_esta_certo_disso;
+            Stream str = Properties.Resources.silvio_santos_esta_certo_disso1;
 
             System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
             snd.Play();

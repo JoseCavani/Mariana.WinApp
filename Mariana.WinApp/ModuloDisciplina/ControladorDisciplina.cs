@@ -40,7 +40,7 @@ namespace Mariana.WinApp.ModuloDisciplina
 
             TelaCadastroDisciplinaForm tela = new TelaCadastroDisciplinaForm();
 
-            tela.Disciplina = disciplinaSelecionada;
+            tela.Disciplina = (Disciplina)disciplinaSelecionada.Clone();
 
             tela.GravarRegistro = repositorioDisciplina.Editar;
 

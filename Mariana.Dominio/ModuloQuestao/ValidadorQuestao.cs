@@ -11,7 +11,7 @@ namespace Mariana.Dominio.ModuloQuestao
     {
         public ValidadorQuestao()
         {
-            //validações aqui
+            RuleFor(x => x.questao).NotEmpty().NotNull().WithMessage("Questão vazia");
         }
             
     }

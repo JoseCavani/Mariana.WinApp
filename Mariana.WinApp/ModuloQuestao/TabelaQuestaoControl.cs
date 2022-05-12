@@ -49,7 +49,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
             foreach (Questao questao in questeos)
             {
-                grid.Rows.Add(questao.Numero, questao.questao, questao.materia.Titulo, questao.Bimestre+"ª");
+                grid.Rows.Add(questao.Numero, questao.Titulo, questao.materia.Titulo + " " + questao.materia.Serie + "ª", questao.Bimestre+"ª");
             }
         }
 

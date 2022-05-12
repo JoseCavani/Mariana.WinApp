@@ -50,18 +50,17 @@ namespace Mariana.WinApp.ModuloTeste
 
             foreach (var questao in TesteSelecionada.Questoes)
             {
-                dc.Content.End.Insert($"{questao.questao}\n");
+                dc.Content.End.Insert($"{questao.Titulo}\n");
                 foreach (var opcao in questao.opcoes)
                 {
                   dc.Content.End.Insert($"{opcao.Key}\n");
                 }
             }
 
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Teste"
+                + TesteSelecionada.Numero.ToString() + ".pdf";
 
-
-            string filePath = @"D:\visual studio files\FilesJunk\Teste " + TesteSelecionada.Numero + ".pdf";
-
-            dc.Save(filePath, new PdfSaveOptions()
+            dc.Save(path, new PdfSaveOptions()
             {
                 Compliance = PdfCompliance.PDF_A1a,
                 PreserveFormFields = true
@@ -110,7 +109,7 @@ namespace Mariana.WinApp.ModuloTeste
 
             TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas);
 
-            tela.Teste = TesteSelecionada;
+            tela.Teste = (Teste)TesteSelecionada.Clone();
 
             tela.GravarRegistro = repositorioTeste.Editar;
 
@@ -141,7 +140,7 @@ namespace Mariana.WinApp.ModuloTeste
 
             foreach (var questao in TesteSelecionada.Questoes)
             {
-                dc.Content.End.Insert($"{questao.questao}\n");
+                dc.Content.End.Insert($"{questao.Titulo}\n");
                 foreach (var opcao in questao.opcoes)
                 {
                     if (opcao.Value == true)
@@ -153,9 +152,10 @@ namespace Mariana.WinApp.ModuloTeste
 
 
 
-            string filePath = @"D:\visual studio files\FilesJunk\Gabarito Teste " + TesteSelecionada.Numero + ".pdf";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Gabarito do Teste"
+              + TesteSelecionada.Numero.ToString() + ".pdf";
 
-            dc.Save(filePath, new PdfSaveOptions()
+            dc.Save(path, new PdfSaveOptions()
             {
                 Compliance = PdfCompliance.PDF_A1a,
                 PreserveFormFields = true

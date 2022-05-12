@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mariana.Dominio.ModuloDisciplina
 {
-    public class Disciplina : EntidadeBase<Disciplina>
+    public class Disciplina : EntidadeBase<Disciplina>, ICloneable
     {
         public List<Questao> questoes = new List<Questao>();
 
@@ -29,9 +29,18 @@ namespace Mariana.Dominio.ModuloDisciplina
 
         public override void Atualizar(Disciplina registro)
         {
-
+            this.Titulo = registro.Titulo;
         }
 
-        public string Titulo { get; set; }
+        public object Clone()
+        {
+          return  new Disciplina
+            {
+                Numero = this.Numero,
+                Titulo = this.Titulo,
+            };
+        }
+
+       
     }
 }

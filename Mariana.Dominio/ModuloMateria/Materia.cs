@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Mariana.Dominio.ModuloMateria
 {
-    public class Materia : EntidadeBase<Materia>
+    public class Materia : EntidadeBase<Materia>, ICloneable
     {
 
-        public string Titulo { get; set; }
         public int Serie { get; set; }
         public Disciplina Disciplina { get; set; }
 
@@ -35,7 +34,20 @@ namespace Mariana.Dominio.ModuloMateria
 
         public override void Atualizar(Materia registro)
         {
-            
+            this.Titulo = registro.Titulo;
+            this.Serie= registro.Serie;
+            this.Disciplina= registro.Disciplina;
+        }
+
+        public object Clone()
+        {
+            return new Materia
+            {
+                Numero = this.Numero,
+                Titulo = this.Titulo,
+                Serie = this.Serie,
+                Disciplina = this.Disciplina,
+            };
         }
     }
 }

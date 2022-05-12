@@ -2,12 +2,13 @@
 using System.IO;
 using SautinSoft.Document;
 using Mariana.Dominio.ModuloTeste;
+using System;
 
 namespace Marina.Infra.Arquivos
 {
     public class SerializadorDadosEmJsonDotnet : ISerializador
     {
-        private const string arquivo = @"D:\visual studio files\FilesJunk\dados.json";
+        private string arquivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Dados.json";
 
         public DataContext CarregarDadosDoArquivo()
         {

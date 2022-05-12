@@ -44,7 +44,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
             TelaCadastroQuestaoForm tela = new TelaCadastroQuestaoForm(materias);
 
-            tela.Questao = QuestaoSelecionada;
+            tela.Questao = (Questao)QuestaoSelecionada.Clone();
 
             tela.GravarRegistro = repositorioQuestao.Editar;
 

@@ -11,6 +11,8 @@ namespace Mariana.Dominio.ModuloTeste
     {
         public ValidadorTeste()
         {
+            RuleFor(x => x.Titulo).NotEmpty().NotNull().WithMessage("Titulo não pode ser vazia");
+
             RuleFor(x => x.Questoes.Count).Equal(x => x.NumeroQuestoes).WithMessage("não ha questoes suficientes com esses criterios");
         }
     }

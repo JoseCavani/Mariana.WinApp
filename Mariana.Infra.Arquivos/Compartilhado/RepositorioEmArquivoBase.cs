@@ -12,6 +12,8 @@ namespace Marina.Infra.Arquivos
 
         protected int contador = 0;
 
+        private T registro;
+
         public RepositorioEmArquivoBase(DataContext dataContext)
         {
             this.dataContext = dataContext;
@@ -23,9 +25,7 @@ namespace Marina.Infra.Arquivos
 
         public virtual ValidationResult Inserir(T novoRegistro)
         {
-            var validator = ObterValidador();
-
-            var resultadoValidacao = validator.Validate(novoRegistro);
+            var resultadoValidacao = Validar(novoRegistro);
 
             if (resultadoValidacao.IsValid)
             {
@@ -41,9 +41,7 @@ namespace Marina.Infra.Arquivos
 
         public virtual ValidationResult Editar(T registro)
         {
-            var validator = ObterValidador();
-
-            var resultadoValidacao = validator.Validate(registro);
+            var resultadoValidacao = Validar(registro);
 
             if (resultadoValidacao.IsValid)
             {
@@ -61,6 +59,32 @@ namespace Marina.Infra.Arquivos
 
             return resultadoValidacao;
         }
+
+        protected virtual  ValidationResult Validar(T registro)
+        {
+            var validator = ObterValidador();
+
+            var resultadoValidacao = validator.Validate(registro);
+
+            if (resultadoValidacao.IsValid == false)
+                return resultadoValidacao;
+
+            var nomeEncontrado = ObterRegistros()
+                .Where(x => x.Numero != registro.Numero)
+                .ToList()
+               .Select(x => x.Titulo)
+               .Contains(registro.Titulo);
+
+
+
+
+            if (nomeEncontrado)
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
+
+            return resultadoValidacao;
+        }
+
+
 
         public virtual ValidationResult Excluir(T registro)
         {

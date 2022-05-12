@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
@@ -18,6 +19,8 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
         {
         }
 
+
+     
         public List<Disciplina> ObterDiscplinas()
         {
            return dataContext.Disciplinas;

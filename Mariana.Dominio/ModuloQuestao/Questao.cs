@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace Mariana.Dominio.ModuloQuestao
 {
-    public class Questao : EntidadeBase<Questao>
+    public class Questao : EntidadeBase<Questao>, ICloneable
     {
-        public string questao;
+
+        public string Titulo { get; set; }
         public Dictionary<string,bool> opcoes = new();
         public Materia materia;
         public  int Bimestre;
@@ -20,7 +21,7 @@ namespace Mariana.Dominio.ModuloQuestao
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine(questao);
+            sb.AppendLine(Titulo);
 
             foreach (var item in opcoes)
             {
@@ -32,7 +33,23 @@ namespace Mariana.Dominio.ModuloQuestao
 
         public override void Atualizar(Questao registro)
         {
-            
+            this.Titulo = registro.Titulo;
+            this.opcoes = registro.opcoes;
+            this.materia = registro.materia;
+            this.Bimestre = registro.Bimestre;
+        }
+
+    
+       public object Clone()
+        {
+            return new Questao
+            {
+                Numero = this.Numero,
+                Titulo = this.Titulo,
+                opcoes = this.opcoes,
+                materia = this.materia,
+                Bimestre = this.Bimestre,
+            };
         }
     }
 }

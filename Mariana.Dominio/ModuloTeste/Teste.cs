@@ -10,10 +10,9 @@ using System.Threading.Tasks;
 
 namespace Mariana.Dominio.ModuloTeste
 {
-    public class Teste : EntidadeBase<Teste>
+    public class Teste : EntidadeBase<Teste> , ICloneable
     {
         public DateTime Data { get ; set; }
-        public string Titulo { get ; set ; }
         public int NumeroQuestoes { get; set ; }
         public List<Questao> Questoes { get ; set ; }
         public Disciplina Disciplina { get ; set; }
@@ -43,7 +42,25 @@ namespace Mariana.Dominio.ModuloTeste
 
         public override void Atualizar(Teste registro)
         {
-          
+            this.Data = registro.Data;
+            this.Titulo = registro.Titulo;
+            this.NumeroQuestoes = NumeroQuestoes;
+            this.Questoes = registro.Questoes;
+            this.Disciplina = registro.Disciplina;
+            this.Materia = registro.Materia;
+        }
+
+        public object Clone()
+        {
+            Teste obj = new Teste();
+            obj.Numero = this.Numero;
+            obj.Data = Data;
+            obj.Titulo = Titulo;
+            obj.NumeroQuestoes = NumeroQuestoes;
+            obj.Questoes = Questoes;
+            obj.Disciplina = Disciplina;
+            obj.Materia = Materia;
+            return obj;
         }
     }
 }

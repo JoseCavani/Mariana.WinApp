@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloMateria;
 using Marina.Infra.Arquivos;
@@ -17,6 +18,7 @@ namespace Mariana.Infra.Arquivos.ModuloMateria
             if (dataContext.Materias.Count > 0)
                 contador = dataContext.Materias.Max(x => x.Numero);
         }
+     
 
         public List<Disciplina> ObterDisciplinas()
         {

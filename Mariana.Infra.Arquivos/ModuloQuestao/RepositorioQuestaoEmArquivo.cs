@@ -18,6 +18,9 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
                 contador = dataContext.Questoes.Max(x => x.Numero);
         }
 
+
+     
+
         public override List<Questao> ObterRegistros()
         {
             return dataContext.Questoes;

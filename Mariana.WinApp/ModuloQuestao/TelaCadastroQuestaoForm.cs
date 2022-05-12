@@ -38,7 +38,7 @@ namespace Mariana.WinApp.ModuloQuestao
             {
                 questao = value;
                 txtNumero.Text = Questao.Numero.ToString();
-                txtQuestao.Text = Questao.questao;
+                txtQuestao.Text = Questao.Titulo;
                 if (Questao.Bimestre == 1)
                     comboBoxBimestre.SelectedIndex = 0;
                 else if(Questao.Bimestre == 2)
@@ -57,7 +57,9 @@ namespace Mariana.WinApp.ModuloQuestao
                     if(item.Value == true)
                     {
                         checkedListBoxAlternativas.SetItemChecked(contador, true);
+                        
                     }
+                    contador++;
 
                 }
 
@@ -68,7 +70,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            Questao.questao = txtQuestao.Text;
+            Questao.Titulo = txtQuestao.Text;
 
             if (comboBoxBimestre.SelectedIndex == 0)
                 Questao.Bimestre = 1;

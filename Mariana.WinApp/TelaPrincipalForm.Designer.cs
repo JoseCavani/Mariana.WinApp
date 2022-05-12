@@ -117,7 +117,7 @@
             // btnInserir
             // 
             this.btnInserir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnInserir.Image = global::Mariana.WinApp.Properties.Resources.outline_add_circle_outline_black_24dp;
+            this.btnInserir.Image = global::Mariana.WinApp.Properties.Resources.outline_add_circle_outline_black_24dp1;
             this.btnInserir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnInserir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnInserir.Name = "btnInserir";
@@ -129,7 +129,7 @@
             // btnEditar
             // 
             this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEditar.Image = global::Mariana.WinApp.Properties.Resources.outline_mode_edit_black_24dp;
+            this.btnEditar.Image = global::Mariana.WinApp.Properties.Resources.outline_mode_edit_black_24dp1;
             this.btnEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditar.Name = "btnEditar";
@@ -141,7 +141,7 @@
             // btnExcluir
             // 
             this.btnExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnExcluir.Image = global::Mariana.WinApp.Properties.Resources.outline_delete_black_24dp;
+            this.btnExcluir.Image = global::Mariana.WinApp.Properties.Resources.outline_delete_black_24dp1;
             this.btnExcluir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExcluir.Name = "btnExcluir";
@@ -158,7 +158,7 @@
             // btnAtualizarQuestoes
             // 
             this.btnAtualizarQuestoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnAtualizarQuestoes.Image = global::Mariana.WinApp.Properties.Resources.outline_list_alt_black_24dp;
+            this.btnAtualizarQuestoes.Image = global::Mariana.WinApp.Properties.Resources.outline_list_alt_black_24dp1;
             this.btnAtualizarQuestoes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnAtualizarQuestoes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAtualizarQuestoes.Name = "btnAtualizarQuestoes";
@@ -169,7 +169,7 @@
             // toolStripButtonGabarito
             // 
             this.toolStripButtonGabarito.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonGabarito.Image = global::Mariana.WinApp.Properties.Resources.check_box_FILL0_wght400_GRAD0_opsz241;
+            this.toolStripButtonGabarito.Image = global::Mariana.WinApp.Properties.Resources.check_box_FILL0_wght400_GRAD0_opsz243;
             this.toolStripButtonGabarito.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonGabarito.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGabarito.Name = "toolStripButtonGabarito";
@@ -180,7 +180,7 @@
             // toolStripButtonPDF
             // 
             this.toolStripButtonPDF.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonPDF.Image = global::Mariana.WinApp.Properties.Resources.file_download_FILL0_wght400_GRAD0_opsz48;
+            this.toolStripButtonPDF.Image = global::Mariana.WinApp.Properties.Resources.file_download_FILL0_wght400_GRAD0_opsz481;
             this.toolStripButtonPDF.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPDF.Name = "toolStripButtonPDF";
             this.toolStripButtonPDF.Size = new System.Drawing.Size(23, 38);
