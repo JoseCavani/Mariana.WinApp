@@ -12,7 +12,6 @@ namespace Mariana.Dominio.ModuloQuestao
     public class Questao : EntidadeBase<Questao>, ICloneable
     {
 
-        public string Titulo { get; set; }
         public Dictionary<string,bool> opcoes = new();
         public Materia materia;
         public  int Bimestre;

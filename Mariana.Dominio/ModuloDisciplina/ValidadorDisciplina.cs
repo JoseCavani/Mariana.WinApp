@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Mariana.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace Mariana.Dominio.ModuloDisciplina
 {
-    public class ValidadorDisciplina : AbstractValidator<Disciplina>
+    public class ValidadorDisciplina : ValidadorBase<Disciplina>
     {
         public ValidadorDisciplina()
         {
-            RuleFor(x => x.Titulo)
-                .NotNull().NotEmpty()
-                .WithMessage("Disicplina nao pode ser vazia");
+          
         }
     }
 }

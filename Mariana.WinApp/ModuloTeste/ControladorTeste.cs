@@ -16,12 +16,10 @@ namespace Mariana.WinApp.ModuloTeste
     {
         private IRepositorioTeste repositorioTeste;
         private TabelaTesteControl tabelaTestes;
-        private List<Disciplina> disciplinas;
 
         public ControladorTeste(IRepositorioTeste repositorioTeste)
         {
             this.repositorioTeste = repositorioTeste;
-            this.disciplinas = repositorioTeste.ObterDiscplinas();
         }
 
         private Teste ObtemTesteSelecionada()
@@ -107,7 +105,7 @@ namespace Mariana.WinApp.ModuloTeste
                 return;
             }
 
-            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas);
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioTeste.ObterDiscplinas());
 
             tela.Teste = (Teste)TesteSelecionada.Clone();
 
@@ -188,7 +186,7 @@ namespace Mariana.WinApp.ModuloTeste
 
         public override void Inserir()
         {
-            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(disciplinas);
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioTeste.ObterDiscplinas());
             tela.Teste = new Teste();
 
             tela.GravarRegistro = repositorioTeste.Inserir;

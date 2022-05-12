@@ -43,9 +43,6 @@ namespace Mariana.WinApp.ModuloTeste
                 comboBoxMateria.SelectedItem = teste.Materia;
 
                 comboBoxDisciplina.SelectedItem = teste.Disciplina;
-
-                if(teste.Disciplina != null)
-                    teste.NumeroQuestoes = teste.Disciplina.questoes.Count;
                 
 
                 numericUpDownQuantidade.Value = teste.NumeroQuestoes;

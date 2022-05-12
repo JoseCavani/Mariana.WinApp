@@ -72,8 +72,8 @@ namespace Marina.Infra.Arquivos
             var nomeEncontrado = ObterRegistros()
                 .Where(x => x.Numero != registro.Numero)
                 .ToList()
-               .Select(x => x.Titulo)
-               .Contains(registro.Titulo);
+               .Select(x => x.Titulo.ToLower())
+               .Contains(registro.Titulo.ToLower());
 
 
 
