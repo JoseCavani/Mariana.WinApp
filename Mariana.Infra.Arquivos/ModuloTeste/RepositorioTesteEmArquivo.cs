@@ -46,8 +46,13 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
 
         protected override int PegarContador()
         {
-           contador = dataContext.Teste.Max(x => x.Numero);
-            return ++contador;
+            if (dataContext.Teste.Count > 0)
+            {
+                contador = dataContext.Teste.Max(x => x.Numero);
+                return ++contador;
+            }
+            else
+                return contador;
         }
     }
 }

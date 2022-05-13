@@ -233,7 +233,7 @@
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menu);
             this.Name = "TelaPrincipalForm";
-            this.Text = "Form1";
+            this.Text = "Gerador de testes";
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.toolbox.ResumeLayout(false);

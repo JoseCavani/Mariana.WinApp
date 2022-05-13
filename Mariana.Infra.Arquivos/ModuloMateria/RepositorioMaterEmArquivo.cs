@@ -37,8 +37,13 @@ namespace Mariana.Infra.Arquivos.ModuloMateria
 
         protected override int PegarContador()
         {
-            contador = dataContext.Materias.Max(x => x.Numero);
-            return ++contador;
+            if (dataContext.Materias.Count > 0)
+            {
+                contador = dataContext.Materias.Max(x => x.Numero);
+                return ++contador;
+            }
+            else
+                return contador;
         }
     }
 }
