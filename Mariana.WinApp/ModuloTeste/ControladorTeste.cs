@@ -212,6 +212,8 @@ namespace Mariana.WinApp.ModuloTeste
 
             tela.comboBoxDisciplina.Enabled = false;
 
+            tela.comboBoxMateria.SelectedIndex = 0;
+
             tela.GravarRegistro = ColocaNumeroNoTituloEInserir(tela);
 
 
@@ -226,20 +228,67 @@ namespace Mariana.WinApp.ModuloTeste
 
         private Func<Teste,ValidationResult> ColocaNumeroNoTituloEInserir(TelaCadastroTesteForm tela)
         {
-            bool nomeEncontrado;
-            do
+                
+
+           char numero = tela.Teste.Titulo.Reverse().First();
+
+
+
+
+            if (int.TryParse(numero.ToString(), out int num))
             {
-                int contador = 1;
-                tela.Teste.Titulo += $" {contador.ToString()}";
+                var charArray = tela.Teste.Titulo.ToCharArray();
 
-                nomeEncontrado = repositorioTeste.ObterRegistros()
+                string tituloTemporary = "";
+
+                for (int i = 0; i < charArray.Length; i++)
+                {
+                    if (charArray[i] == numero)
+                    {
+                        continue;
+                    }
+
+                    tituloTemporary += charArray[i];
+
+                }
+                num++;
+
+                tituloTemporary += num;
+
+                tela.Teste.Titulo = tituloTemporary;
+            }
+            else
+            {
+              
+
+
+               bool nomeEncontrado = false;
+
+                int contador = 2;
+
+                string tituloTemporary;
+
+                do
+                {
+                     tituloTemporary = tela.Teste.Titulo;
+
+                    tituloTemporary += $" {contador.ToString()}";
+
+
+                    nomeEncontrado = repositorioTeste.ObterRegistros()
              .Select(x => x.Titulo)
-             .Contains(tela.Teste.Titulo);
+             .Contains(tituloTemporary);
 
-                contador++;
+                    contador++;
 
-            } while (nomeEncontrado);
+                } while (nomeEncontrado);
+
+                tela.Teste.Titulo = tituloTemporary;
+
+            }
+
             tela.txtTitulo.Text = tela.Teste.Titulo;
+
            return repositorioTeste.Inserir;
         }
 

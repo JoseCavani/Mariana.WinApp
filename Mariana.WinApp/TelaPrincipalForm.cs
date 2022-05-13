@@ -123,6 +123,7 @@ namespace Mariana.WinApp
             btnAtualizarQuestoes.Enabled = configuracao.AtualizarQuestoesHabilitado;
             toolStripButtonGabarito.Enabled = configuracao.GabaritoHabilitado;
             toolStripButtonPDF.Enabled = configuracao.PDFHabilitado;
+            toolStripButtonDuplicar.Enabled = configuracao.DuplicarHabilitado;
         }
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
@@ -133,6 +134,7 @@ namespace Mariana.WinApp
             btnAtualizarQuestoes.ToolTipText = configuracao.TooltipAtualizarQuestoes;
             toolStripButtonGabarito.ToolTipText = configuracao.TooltipGabarito;
             toolStripButtonPDF.ToolTipText = configuracao.TooltipPDF;
+            toolStripButtonDuplicar.ToolTipText = configuracao.TooltipDuplicar;
         }
 
         /// <summary>
