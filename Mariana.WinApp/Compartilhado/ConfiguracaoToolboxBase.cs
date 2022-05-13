@@ -16,6 +16,8 @@
 
         public virtual string TooltipPDF { get; }
 
+        public virtual string TooltipDuplicar { get; }
+
 
         public virtual bool InserirHabilitado { get { return true; } }
 
@@ -28,5 +30,7 @@
         public virtual bool GabaritoHabilitado { get { return false; } }
 
         public virtual bool PDFHabilitado { get { return false; } }
+
+        public virtual bool DuplicarHabilitado { get { return false; } }
     }
 }

@@ -74,7 +74,15 @@ namespace Mariana.WinApp
             testeAtivo = false;
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
-     
+
+
+
+        private void toolStripButtonDuplicar_Click(object sender, EventArgs e)
+        {
+            controlador.Duplicar();
+        }
+
+
         private void btnInserir_Click(object sender, EventArgs e)
         {
             controlador.Inserir();
@@ -255,6 +263,7 @@ namespace Mariana.WinApp
 
             controladores.Add("Teste", new ControladorTeste(repositorioTeste));
         }
+
       
     }
 }

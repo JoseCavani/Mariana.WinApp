@@ -179,18 +179,17 @@ namespace Mariana.WinApp.ModuloTeste
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBoxDisciplina;
         private System.Windows.Forms.Label labelDisciplina;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGravar;
-        private System.Windows.Forms.TextBox txtTitulo;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label labelTitulo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxMateria;
         private System.Windows.Forms.Label labelMateria;
         private System.Windows.Forms.Label labelQuantidadeQuestoes;
         public System.Windows.Forms.NumericUpDown numericUpDownQuantidade;
+        public System.Windows.Forms.ComboBox comboBoxDisciplina;
+        public System.Windows.Forms.TextBox txtTitulo;
+        public System.Windows.Forms.ComboBox comboBoxMateria;
     }
 }

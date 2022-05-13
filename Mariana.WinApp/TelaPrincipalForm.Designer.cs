@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipalForm));
             this.menu = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TesteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,7 @@
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripButtonDuplicar = new System.Windows.Forms.ToolStripButton();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -103,6 +105,7 @@
             this.btnEditar,
             this.btnExcluir,
             this.toolStripSeparator1,
+            this.toolStripButtonDuplicar,
             this.btnAtualizarQuestoes,
             this.toolStripButtonGabarito,
             this.toolStripButtonPDF,
@@ -223,6 +226,16 @@
             this.labelRodape.Size = new System.Drawing.Size(52, 17);
             this.labelRodape.Text = "[rodapé]";
             // 
+            // toolStripButtonDuplicar
+            // 
+            this.toolStripButtonDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDuplicar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDuplicar.Image")));
+            this.toolStripButtonDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDuplicar.Name = "toolStripButtonDuplicar";
+            this.toolStripButtonDuplicar.Size = new System.Drawing.Size(23, 38);
+            this.toolStripButtonDuplicar.Text = "toolStripButton1";
+            this.toolStripButtonDuplicar.Click += new System.EventHandler(this.toolStripButtonDuplicar_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -265,5 +278,6 @@
         private System.Windows.Forms.ToolStripButton btnAtualizarQuestoes;
         private System.Windows.Forms.ToolStripButton toolStripButtonGabarito;
         private System.Windows.Forms.ToolStripButton toolStripButtonPDF;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDuplicar;
     }
 }

@@ -13,5 +13,6 @@ namespace Mariana.Dominio.ModuloTeste
     {
         List<Questao> SelecionarQuestoes();
         List<Disciplina> ObterDiscplinas();
+        List<Teste> ObterRegistros();
     }
 }

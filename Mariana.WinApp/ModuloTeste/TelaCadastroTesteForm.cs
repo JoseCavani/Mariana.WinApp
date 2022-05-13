@@ -109,6 +109,8 @@ namespace Mariana.WinApp.ModuloTeste
 
             if (resultadoValidacao.IsValid == false)
             {
+
+
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
                 TelaPrincipalForm.Instancia.AtualizarRodape(erro);

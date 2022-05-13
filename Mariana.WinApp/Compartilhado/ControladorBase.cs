@@ -23,5 +23,7 @@ namespace Mariana.WinApp.Compartilhado
         public virtual void Gabarito() { }
 
         public virtual void PDF() { }
+
+        public virtual void Duplicar() { }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Mariana.Dominio.ModuloDisciplina;
+﻿using FluentValidation.Results;
+using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
 using Mariana.WinApp.Compartilhado;
@@ -190,6 +191,56 @@ namespace Mariana.WinApp.ModuloTeste
                 repositorioTeste.Excluir(TesteSelecionada);
                 CarregarTestes();
             }
+        }
+
+        public override void Duplicar()
+        {
+            Teste TesteSelecionada = ObtemTesteSelecionada();
+
+            if (TesteSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma Teste primeiro",
+                "Edição de Testes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioTeste.ObterDiscplinas());
+
+            tela.Teste = (Teste)TesteSelecionada.Clone();
+
+            tela.txtTitulo.Enabled = false;
+
+            tela.comboBoxDisciplina.Enabled = false;
+
+            tela.GravarRegistro = ColocaNumeroNoTituloEInserir(tela);
+
+
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarTestes();
+            }
+        }
+
+        private Func<Teste,ValidationResult> ColocaNumeroNoTituloEInserir(TelaCadastroTesteForm tela)
+        {
+            bool nomeEncontrado;
+            do
+            {
+                int contador = 1;
+                tela.Teste.Titulo += $" {contador.ToString()}";
+
+                nomeEncontrado = repositorioTeste.ObterRegistros()
+             .Select(x => x.Titulo)
+             .Contains(tela.Teste.Titulo);
+
+                contador++;
+
+            } while (nomeEncontrado);
+            tela.txtTitulo.Text = tela.Teste.Titulo;
+           return repositorioTeste.Inserir;
         }
 
         public override void Inserir()
