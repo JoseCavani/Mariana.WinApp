@@ -34,5 +34,11 @@ namespace Mariana.Infra.Arquivos.ModuloMateria
         {
             return new ValidadorMateria();
         }
+
+        protected override int PegarContador()
+        {
+            contador = dataContext.Materias.Max(x => x.Numero);
+            return ++contador;
+        }
     }
 }

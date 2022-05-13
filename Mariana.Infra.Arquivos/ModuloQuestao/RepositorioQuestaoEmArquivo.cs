@@ -33,5 +33,11 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
         {
             return dataContext.Questoes;
         }
+
+        protected override int PegarContador()
+        {
+            contador = dataContext.Questoes.Max(x => x.Numero);
+                return ++contador;
+        }
     }
 }

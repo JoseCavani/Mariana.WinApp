@@ -17,6 +17,8 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
     {
         public RepositorioTesteEmArquivo(DataContext dataContext) : base(dataContext)
         {
+            if (dataContext.Teste.Count > 0)
+                contador = dataContext.Teste.Max(x => x.Numero);
         }
 
 
@@ -40,6 +42,12 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
         public List<Questao> SelecionarQuestoes()
         {
             return dataContext.Questoes; 
+        }
+
+        protected override int PegarContador()
+        {
+           contador = dataContext.Teste.Max(x => x.Numero);
+            return ++contador;
         }
     }
 }

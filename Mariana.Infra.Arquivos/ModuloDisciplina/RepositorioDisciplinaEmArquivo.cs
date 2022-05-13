@@ -60,5 +60,11 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
         {
             return dataContext.Questoes;
         }
+
+        protected override int PegarContador()
+        {
+            contador = dataContext.Disciplinas.Max(x => x.Numero);
+            return ++contador;
+        }
     }
 }

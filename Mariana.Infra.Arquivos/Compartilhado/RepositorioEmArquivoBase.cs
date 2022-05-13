@@ -23,13 +23,15 @@ namespace Marina.Infra.Arquivos
 
         public abstract AbstractValidator<T> ObterValidador();
 
+        protected abstract int PegarContador();
+
         public virtual ValidationResult Inserir(T novoRegistro)
         {
             var resultadoValidacao = Validar(novoRegistro);
 
             if (resultadoValidacao.IsValid)
             {
-                novoRegistro.Numero = ++contador;
+                novoRegistro.Numero = PegarContador();
 
                 var registros = ObterRegistros();
 
