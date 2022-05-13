@@ -39,6 +39,7 @@
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.btnExcluir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonDuplicar = new System.Windows.Forms.ToolStripButton();
             this.btnAtualizarQuestoes = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonGabarito = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPDF = new System.Windows.Forms.ToolStripButton();
@@ -47,7 +48,6 @@
             this.panelRegistros = new System.Windows.Forms.Panel();
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripButtonDuplicar = new System.Windows.Forms.ToolStripButton();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -158,6 +158,16 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 41);
             // 
+            // toolStripButtonDuplicar
+            // 
+            this.toolStripButtonDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDuplicar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDuplicar.Image")));
+            this.toolStripButtonDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDuplicar.Name = "toolStripButtonDuplicar";
+            this.toolStripButtonDuplicar.Size = new System.Drawing.Size(23, 38);
+            this.toolStripButtonDuplicar.Text = "toolStripButton1";
+            this.toolStripButtonDuplicar.Click += new System.EventHandler(this.toolStripButtonDuplicar_Click);
+            // 
             // btnAtualizarQuestoes
             // 
             this.btnAtualizarQuestoes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -225,16 +235,6 @@
             this.labelRodape.Name = "labelRodape";
             this.labelRodape.Size = new System.Drawing.Size(52, 17);
             this.labelRodape.Text = "[rodapé]";
-            // 
-            // toolStripButtonDuplicar
-            // 
-            this.toolStripButtonDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDuplicar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDuplicar.Image")));
-            this.toolStripButtonDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDuplicar.Name = "toolStripButtonDuplicar";
-            this.toolStripButtonDuplicar.Size = new System.Drawing.Size(23, 38);
-            this.toolStripButtonDuplicar.Text = "toolStripButton1";
-            this.toolStripButtonDuplicar.Click += new System.EventHandler(this.toolStripButtonDuplicar_Click);
             // 
             // TelaPrincipalForm
             // 

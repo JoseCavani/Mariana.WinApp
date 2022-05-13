@@ -66,11 +66,13 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripButtonDuplicar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVDhPY/j27dt/SjDYACcnJ7IwigEf3n8kCZNswPNb
-        J/+f6DYF0yA+yQac6Db5f6hWCmwIiE+mC0wIu2DS2Vf/F1x6DefjwlgNyNr34r/0wkdgTMgQDAOQNRNj
-        CIoBOg0rMTTDMLIhIHbriZeYBmDTiIxBGkEYxge5liQDsGGQqykyAISpZwAlmIEywMAAAAc1/Jwvt6sN
-        AAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEdSURBVGhD7ZTBCcJQEAXTmS1Zgh1oSZZgCXZgCboLOSwh
+        gxBnI8of2MtLmCGXTIPBYBPnuGfzZaOFS9xasOOypfOIW4t1XLZ0aqCL1karfKa10SqfURqHchVF/gal
+        QRLaTZQGSWg3URokod1EaZCEdhOlQRLaTZQGSWg3URokod1EaZCEdhOlQRLaTZQGSWg3URokod1EaZCE
+        dhOlQRLaTZQGSWg3URokod1EaZCEdhOlQRLaTZQGSWg3URokod1EaZCEdhOlQRLaTZQGSWg3URokod1E
+        aZCEdhOlQZJ7XH3WednaTBVVTnH1WedlazNVtCTFt7j6jnnpPsZ9RBX+JOMDvs1ef5trXAt7/W3aPiDp
+        /tvktX7AYPDfTNMLfKbuSLy3If4AAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="statusStripRodape.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
