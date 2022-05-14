@@ -40,9 +40,10 @@ namespace Mariana.WinApp.ModuloTeste
 
                 txtTitulo.Text = teste.Titulo;
 
+                comboBoxDisciplina.SelectedItem = teste.Disciplina;
+
                 comboBoxMateria.SelectedItem = teste.Materia;
 
-                comboBoxDisciplina.SelectedItem = teste.Disciplina;
                 
 
                 numericUpDownQuantidade.Value = teste.NumeroQuestoes;

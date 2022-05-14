@@ -212,7 +212,7 @@ namespace Mariana.WinApp.ModuloTeste
 
             tela.comboBoxDisciplina.Enabled = false;
 
-            tela.comboBoxMateria.SelectedIndex = 0;
+            tela.comboBoxMateria.Enabled = false;
 
             tela.GravarRegistro = ColocaNumeroNoTituloEInserir(tela);
 
