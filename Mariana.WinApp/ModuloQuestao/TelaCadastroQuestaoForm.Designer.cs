@@ -46,6 +46,7 @@
             // 
             // comboBoxMateria
             // 
+            this.comboBoxMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMateria.FormattingEnabled = true;
             this.comboBoxMateria.Location = new System.Drawing.Point(83, 96);
             this.comboBoxMateria.Name = "comboBoxMateria";
@@ -63,6 +64,7 @@
             // 
             // comboBoxBimestre
             // 
+            this.comboBoxBimestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBimestre.FormattingEnabled = true;
             this.comboBoxBimestre.Items.AddRange(new object[] {
             "1ª",
@@ -144,6 +146,7 @@
             this.checkedListBoxAlternativas.Name = "checkedListBoxAlternativas";
             this.checkedListBoxAlternativas.Size = new System.Drawing.Size(144, 94);
             this.checkedListBoxAlternativas.TabIndex = 32;
+            this.checkedListBoxAlternativas.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxAlternativas_ItemCheck);
             // 
             // labelAlternativas
             // 

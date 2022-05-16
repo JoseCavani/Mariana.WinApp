@@ -28,18 +28,38 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
 
         public override ValidationResult Excluir(Disciplina registro)
         {
-            var resultadoValidacao = new ValidationResult();
+            var validator = ObterValidador();
 
-            var registros = ObterRegistros();
+            var resultadoValidacao = validator.Validate(registro);
 
-            foreach (var item in dataContext.Materias)
+            if (resultadoValidacao.IsValid == false)
+                return resultadoValidacao;
+
+            var nomeEncontrado = ObterRegistros()
+                .Where(x => x.Numero != registro.Numero)
+                .ToList()
+               .Select(x => x.Titulo.ToLower())
+               .Contains(registro.Titulo.ToLower());
+
+
+
+
+            if (nomeEncontrado)
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
+
+
+            if (resultadoValidacao.IsValid == false || dataContext.Teste.Count == 0)
+                return resultadoValidacao;
+
+
+            foreach (var item in dataContext.Teste)
             {
                 if (item.Disciplina == registro)                
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Disciplina contem materias"));
+                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Disciplina contem testes"));
             }
 
             if (resultadoValidacao.Errors.Count == 0)
-            if (registros.Remove(registro) == false)
+            if (dataContext.Disciplinas.Remove(registro) == false)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
 
             return resultadoValidacao;
@@ -47,8 +67,28 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
 
 
 
+        protected override ValidationResult Validar(Disciplina registro)
+        {
+            var validator = ObterValidador();
 
-   
+            var resultadoValidacao = base.Validar(registro);
+
+            var nomeEncontrado = ObterRegistros()
+               .Where(x => x.Numero != registro.Numero)
+               .ToList()
+              .Select(x => x.Titulo.ToLower())
+              .Contains(registro.Titulo.ToLower());
+
+
+
+
+            if (nomeEncontrado)
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
+
+
+            return resultadoValidacao;
+        }
+
 
 
         public override AbstractValidator<Disciplina> ObterValidador()

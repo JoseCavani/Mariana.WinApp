@@ -44,12 +44,15 @@ namespace Mariana.WinApp.ModuloMateria
                     comboBoxSeries.SelectedIndex = 1;
 
                 comboBoxDisciplina.SelectedItem = materia.Disciplina;
+
+                if (materia.Disciplina == null)
+                    comboBoxDisciplina.SelectedIndex = 0;
             }
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            materia.Titulo = txtTitulo.Text;
+            materia.Titulo = txtTitulo.Text.TrimEnd().TrimStart();
 
             if (comboBoxSeries.SelectedIndex == 0)
                 materia.Serie = 1;

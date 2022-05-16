@@ -39,16 +39,20 @@ namespace Mariana.WinApp.ModuloQuestao
                 questao = value;
                 txtNumero.Text = Questao.Numero.ToString();
                 txtQuestao.Text = Questao.Titulo;
-                if (Questao.Bimestre == 1)
-                    comboBoxBimestre.SelectedIndex = 0;
-                else if(Questao.Bimestre == 2)
+
+                 if(Questao.Bimestre == 2)
                     comboBoxBimestre.SelectedIndex = 1;
                 else if (Questao.Bimestre == 3)
                     comboBoxBimestre.SelectedIndex = 2;
                 else if (Questao.Bimestre == 4)
                     comboBoxBimestre.SelectedIndex = 3;
+                else
+                    comboBoxBimestre.SelectedIndex = 0;
 
                 comboBoxMateria.SelectedItem = Questao.materia;
+
+                if (Questao.materia == null)
+                    comboBoxMateria.SelectedIndex = 0;
 
                 int contador = 0;
                 foreach (var item in Questao.opcoes)
@@ -70,7 +74,23 @@ namespace Mariana.WinApp.ModuloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            Questao.Titulo = txtQuestao.Text;
+
+            if (checkedListBoxAlternativas.Items.Count == 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Adicione uma alternativa");
+                DialogResult = DialogResult.None;
+            }
+
+            if (checkedListBoxAlternativas.CheckedItems.Count == 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Selecionar um item correto");
+                DialogResult = DialogResult.None;
+            }
+
+         
+
+
+            Questao.Titulo = txtQuestao.Text.TrimEnd().TrimStart();
 
             if (comboBoxBimestre.SelectedIndex == 0)
                 Questao.Bimestre = 1;
@@ -132,6 +152,12 @@ namespace Mariana.WinApp.ModuloQuestao
                 return;
             }
             checkedListBoxAlternativas.Items.Add(textBoxAlternativas.Text);
+        }
+
+        private void checkedListBoxAlternativas_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            for (int ix = 0; ix < checkedListBoxAlternativas.Items.Count; ++ix)
+                if (ix != e.Index) checkedListBoxAlternativas.SetItemChecked(ix, false);
         }
     }
 }

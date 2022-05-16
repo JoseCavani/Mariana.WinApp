@@ -17,7 +17,34 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
             if (dataContext.Questoes.Count > 0)
                 contador = dataContext.Questoes.Max(x => x.Numero);
         }
-     
+
+        public virtual ValidationResult Excluir(Questao registro)
+        {
+            var resultadoValidacao = new ValidationResult();
+
+            var registros = ObterRegistros();
+
+
+
+            foreach (var item in dataContext.Teste)
+            {
+                foreach (var item2 in item.Questoes)
+                {
+                    if (item2 == registro)
+                    {
+                        item.Questoes.Remove(item2);
+                        break;
+                    }
+                }
+
+            }
+
+
+            if (registros.Remove(registro) == false)
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
+
+            return resultadoValidacao;
+        }
 
         public override List<Questao> ObterRegistros()
         {

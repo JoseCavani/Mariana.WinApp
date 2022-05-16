@@ -43,8 +43,12 @@ namespace Mariana.WinApp.ModuloTeste
                 comboBoxDisciplina.SelectedItem = teste.Disciplina;
 
                 comboBoxMateria.SelectedItem = teste.Materia;
+                if (teste.Materia == null)
+                    comboBoxMateria.SelectedIndex = 0;
 
-                
+                if (teste.Disciplina == null)
+                    comboBoxDisciplina.SelectedIndex = 0;
+
 
                 numericUpDownQuantidade.Value = teste.NumeroQuestoes;
 
@@ -102,7 +106,7 @@ namespace Mariana.WinApp.ModuloTeste
             }
 
           
-            teste.Titulo = txtTitulo.Text;
+            teste.Titulo = txtTitulo.Text.TrimEnd().TrimStart();
 
 
           
@@ -134,6 +138,7 @@ namespace Mariana.WinApp.ModuloTeste
         {
             comboBoxMateria.Items.Clear();
             comboBoxMateria.Items.Add("Todos");
+            comboBoxMateria.SelectedIndex = 0;
             Disciplina disciplina = (Disciplina)comboBoxDisciplina.SelectedItem;
           
                 foreach (var questao in disciplina.questoes)

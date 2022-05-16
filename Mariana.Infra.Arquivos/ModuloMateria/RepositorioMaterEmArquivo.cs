@@ -18,7 +18,24 @@ namespace Mariana.Infra.Arquivos.ModuloMateria
             if (dataContext.Materias.Count > 0)
                 contador = dataContext.Materias.Max(x => x.Numero);
         }
-     
+
+
+        public override ValidationResult Excluir(Materia registro)
+        {
+            var resultadoValidacao = new ValidationResult();
+
+            var registros = ObterRegistros();
+
+            if (registros.Remove(registro) == false)
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
+
+            if (resultadoValidacao.IsValid)
+            {
+                dataContext.Questoes.RemoveAll(x => x.materia == registro);
+            }
+
+            return resultadoValidacao;
+        }
 
         public List<Disciplina> ObterDisciplinas()
         {

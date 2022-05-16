@@ -16,7 +16,7 @@
 
         public virtual string TooltipPDF { get; }
 
-        public virtual string TooltipDuplicar { get; }
+        public virtual string TooltipDuplicar { get;}
 
 
         public virtual bool InserirHabilitado { get { return true; } }

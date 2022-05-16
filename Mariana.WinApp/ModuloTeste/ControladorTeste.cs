@@ -231,15 +231,17 @@ namespace Mariana.WinApp.ModuloTeste
                 
 
            char numero = tela.Teste.Titulo.Reverse().First();
-
-
+            bool nomeEncontrado;
+            string tituloTemporary;
 
 
             if (int.TryParse(numero.ToString(), out int num))
             {
-                var charArray = tela.Teste.Titulo.ToCharArray();
+                do
+                {
+                    var charArray = tela.Teste.Titulo.ToCharArray();
 
-                string tituloTemporary = "";
+                 tituloTemporary = "";
 
                 for (int i = 0; i < charArray.Length; i++)
                 {
@@ -252,8 +254,13 @@ namespace Mariana.WinApp.ModuloTeste
 
                 }
                 num++;
+              
+                    tituloTemporary += num;
 
-                tituloTemporary += num;
+                    nomeEncontrado = repositorioTeste.ObterRegistros()
+         .Select(x => x.Titulo)
+         .Contains(tituloTemporary);
+                } while (nomeEncontrado);
 
                 tela.Teste.Titulo = tituloTemporary;
             }
@@ -262,11 +269,9 @@ namespace Mariana.WinApp.ModuloTeste
               
 
 
-               bool nomeEncontrado = false;
+                nomeEncontrado = false;
 
                 int contador = 2;
-
-                string tituloTemporary;
 
                 do
                 {

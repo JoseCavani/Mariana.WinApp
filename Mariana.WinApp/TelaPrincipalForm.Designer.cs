@@ -76,24 +76,21 @@
             // TesteMenuItem
             // 
             this.TesteMenuItem.Name = "TesteMenuItem";
-            this.TesteMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.TesteMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.TesteMenuItem.Size = new System.Drawing.Size(180, 22);
             this.TesteMenuItem.Text = "Teste";
             this.TesteMenuItem.Click += new System.EventHandler(this.TesteMenuItem_Click);
             // 
             // disciplinaMenuItem
             // 
             this.disciplinaMenuItem.Name = "disciplinaMenuItem";
-            this.disciplinaMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.disciplinaMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.disciplinaMenuItem.Size = new System.Drawing.Size(180, 22);
             this.disciplinaMenuItem.Text = "Disciplina";
             this.disciplinaMenuItem.Click += new System.EventHandler(this.disciplinaMenuItem_Click);
             // 
             // materiaMenuItem
             // 
             this.materiaMenuItem.Name = "materiaMenuItem";
-            this.materiaMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.materiaMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.materiaMenuItem.Size = new System.Drawing.Size(180, 22);
             this.materiaMenuItem.Text = "Materia";
             this.materiaMenuItem.Click += new System.EventHandler(this.materiaMenuItem_Click);
             // 
@@ -165,7 +162,6 @@
             this.toolStripButtonDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDuplicar.Name = "toolStripButtonDuplicar";
             this.toolStripButtonDuplicar.Size = new System.Drawing.Size(23, 38);
-            this.toolStripButtonDuplicar.Text = "toolStripButton1";
             this.toolStripButtonDuplicar.Click += new System.EventHandler(this.toolStripButtonDuplicar_Click);
             // 
             // btnAtualizarQuestoes
@@ -187,7 +183,6 @@
             this.toolStripButtonGabarito.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonGabarito.Name = "toolStripButtonGabarito";
             this.toolStripButtonGabarito.Size = new System.Drawing.Size(28, 38);
-            this.toolStripButtonGabarito.Text = "toolStripButton1";
             this.toolStripButtonGabarito.Click += new System.EventHandler(this.toolStripButtonGabarito_Click);
             // 
             // toolStripButtonPDF
@@ -197,7 +192,6 @@
             this.toolStripButtonPDF.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPDF.Name = "toolStripButtonPDF";
             this.toolStripButtonPDF.Size = new System.Drawing.Size(23, 38);
-            this.toolStripButtonPDF.Text = "toolStripButtonPDF";
             this.toolStripButtonPDF.Click += new System.EventHandler(this.toolStripButtonPDF_Click);
             // 
             // toolStripSeparator2

@@ -12,7 +12,7 @@ namespace Marina.Infra.Arquivos
 
         protected int contador = 0;
 
-        private T registro;
+        protected T registro;
 
         public RepositorioEmArquivoBase(DataContext dataContext)
         {
@@ -27,12 +27,12 @@ namespace Marina.Infra.Arquivos
 
         public virtual ValidationResult Inserir(T novoRegistro)
         {
+            novoRegistro.Numero = PegarContador();
             var resultadoValidacao = Validar(novoRegistro);
 
             if (resultadoValidacao.IsValid)
             {
-                novoRegistro.Numero = PegarContador();
-
+              
                 var registros = ObterRegistros();
 
                 registros.Add(novoRegistro);

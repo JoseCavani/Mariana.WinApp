@@ -189,7 +189,7 @@ namespace Mariana.WinApp
                 return;
             }
 
-            if (tipo == "Teste" && contextoDados.Materias.Count == 0)
+            if (tipo == "Teste" && contextoDados.Materias.Count == 0 && contextoDados.Teste.Count == 0)
             {
                 AtualizarRodape("cadastre uma Materia primeiro");
                 return;

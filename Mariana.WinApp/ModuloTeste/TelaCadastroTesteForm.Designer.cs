@@ -46,6 +46,7 @@ namespace Mariana.WinApp.ModuloTeste
             // 
             // comboBoxDisciplina
             // 
+            this.comboBoxDisciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDisciplina.FormattingEnabled = true;
             this.comboBoxDisciplina.Location = new System.Drawing.Point(83, 68);
             this.comboBoxDisciplina.Name = "comboBoxDisciplina";
@@ -118,6 +119,7 @@ namespace Mariana.WinApp.ModuloTeste
             // 
             // comboBoxMateria
             // 
+            this.comboBoxMateria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMateria.FormattingEnabled = true;
             this.comboBoxMateria.Items.AddRange(new object[] {
             "Todos"});

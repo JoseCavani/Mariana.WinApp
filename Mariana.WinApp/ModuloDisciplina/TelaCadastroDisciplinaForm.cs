@@ -38,7 +38,7 @@ namespace Mariana.WinApp.ModuloDisciplina
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            disciplina.Titulo = txtTitulo.Text;
+            disciplina.Titulo = txtTitulo.Text.TrimEnd().TrimStart();
 
 
             var resultadoValidacao = GravarRegistro(disciplina);
