@@ -94,7 +94,7 @@ namespace Mariana.WinApp.ModuloTeste
             TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = questaos;
             TelaPrincipalForm.Instancia.testeAtual = TesteSelecionada;
             TelaPrincipalForm.Instancia.testeAtivo = true;
-            TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
+            TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal("Teste");
         }
 
         public override void Editar()

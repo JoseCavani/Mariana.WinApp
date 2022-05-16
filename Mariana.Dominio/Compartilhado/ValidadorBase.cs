@@ -14,7 +14,7 @@ namespace Mariana.Dominio.Compartilhado
         {
             RuleFor(x => x.Titulo)
                 .NotNull().NotEmpty()
-                .WithMessage("Disicplina nao pode ser vazia");
+                .WithMessage("Tiutlo nao pode ser vazia");
         }
     }
 }

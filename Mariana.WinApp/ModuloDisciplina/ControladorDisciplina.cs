@@ -103,7 +103,7 @@ namespace Mariana.WinApp.ModuloDisciplina
 
             TelaPrincipalForm.Instancia.disciplinaSelecionada = disciplinaSelecionada;
             TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = repositorioDisciplina.SelecionarQuestoes().Where(x => x.materia.Disciplina == TelaPrincipalForm.Instancia.disciplinaSelecionada).ToList();
-            TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal();
+            TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal("Disciplina");
         }
 
         private void CarregarDisciplinas()

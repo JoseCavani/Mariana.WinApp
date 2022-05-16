@@ -141,15 +141,15 @@ namespace Mariana.WinApp
         /// para questoes
         /// </summary>
         /// <param></param>
-        public void ConfigurarTelaPrincipal()
+        public void ConfigurarTelaPrincipal(string QuestaoOuTeste)
         {
-            controlador = controladores["Disciplina"];
+            controlador = controladores[QuestaoOuTeste];
 
 
 
             if (disciplinaSelecionada == default)
             {
-                AtualizarRodape("Selecione uma disciplina");
+                AtualizarRodape($"Selecione uma {QuestaoOuTeste}");
                 return;
             }
 

@@ -33,6 +33,7 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
                     if (item2 == registro)
                     {
                         item.Questoes.Remove(item2);
+                        item.NumeroQuestoes -= 1;
                         break;
                     }
                 }
