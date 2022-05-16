@@ -53,6 +53,10 @@ namespace Mariana.WinApp.ModuloTeste
             {
                 grid.Rows.Add(Teste.Numero, Teste.Titulo,Teste.NumeroQuestoes,Teste.Disciplina.Titulo,Teste.Data);
             }
+            if (grid.RowCount > 0)
+            {
+                grid.Rows[0].Selected = true;
+            }
         }
     }
 }

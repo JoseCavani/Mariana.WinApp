@@ -83,13 +83,14 @@ namespace Mariana.WinApp.ModuloQuestao
             if (resultado == DialogResult.OK)
             {
                 questaos.Remove(QuestaoSelecionada);
-                repositorioQuestao.Excluir(QuestaoSelecionada);
 
                 if (TelaPrincipalForm.Instancia.testeAtivo)
                 {
                     TelaPrincipalForm.Instancia.testeAtual.Questoes.Remove(QuestaoSelecionada);
                     TelaPrincipalForm.Instancia.testeAtual.NumeroQuestoes -= 1;
                 }
+                else
+                    repositorioQuestao.Excluir(QuestaoSelecionada);
                 CarregarQuestaos();
             }
         }
