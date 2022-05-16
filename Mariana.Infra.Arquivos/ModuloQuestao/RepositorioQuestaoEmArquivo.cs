@@ -25,23 +25,26 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
             var registros = ObterRegistros();
 
 
-
-            foreach (var item in dataContext.Teste)
-            {
-                foreach (var item2 in item.Questoes)
-                {
-                    if (item2 == registro)
-                    {
-                        item.Questoes.Remove(item2);
-                        break;
-                    }
-                }
-
-            }
-
+         
 
             if (registros.Remove(registro) == false)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
+
+
+            if (resultadoValidacao.IsValid)
+                foreach (var item in dataContext.Teste)
+                {
+                    foreach (var item2 in item.Questoes)
+                    {
+                        if (item2 == registro)
+                        {
+                            item.Questoes.Remove(item2);
+                            break;
+                        }
+                    }
+
+                }
+
 
             return resultadoValidacao;
         }

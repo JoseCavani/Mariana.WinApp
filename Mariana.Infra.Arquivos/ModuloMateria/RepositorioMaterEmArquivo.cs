@@ -26,6 +26,7 @@ namespace Mariana.Infra.Arquivos.ModuloMateria
 
             var registros = ObterRegistros();
 
+
             if (registros.Remove(registro) == false)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
 

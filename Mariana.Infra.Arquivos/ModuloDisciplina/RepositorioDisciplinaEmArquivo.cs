@@ -32,22 +32,7 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
 
             var resultadoValidacao = validator.Validate(registro);
 
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
-
-            var nomeEncontrado = ObterRegistros()
-                .Where(x => x.Numero != registro.Numero)
-                .ToList()
-               .Select(x => x.Titulo.ToLower())
-               .Contains(registro.Titulo.ToLower());
-
-
-
-
-            if (nomeEncontrado)
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome já está cadastrado"));
-
-
+         
             if (resultadoValidacao.IsValid == false || dataContext.Teste.Count == 0)
                 return resultadoValidacao;
 
@@ -58,9 +43,17 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
                     resultadoValidacao.Errors.Add(new ValidationFailure("", "Disciplina contem testes"));
             }
 
+
+        
+
             if (resultadoValidacao.Errors.Count == 0)
             if (dataContext.Disciplinas.Remove(registro) == false)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
+
+            if (resultadoValidacao.IsValid)
+            {
+                dataContext.Materias.RemoveAll(x => x.Disciplina == registro);
+            }
 
             return resultadoValidacao;
         }

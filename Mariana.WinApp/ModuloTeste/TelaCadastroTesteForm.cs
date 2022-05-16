@@ -149,5 +149,19 @@ namespace Mariana.WinApp.ModuloTeste
                 }
             
         }
+
+
+        ToolTip buttonToolTip = new ToolTip();
+        private void comboBoxMateria_MouseHover(object sender, EventArgs e)
+        {
+            buttonToolTip.UseFading = true;
+            buttonToolTip.IsBalloon = true;
+            buttonToolTip.ShowAlways = true;
+            buttonToolTip.AutoPopDelay = 3000;
+            buttonToolTip.InitialDelay = 0;
+            buttonToolTip.ReshowDelay = 0;
+
+            buttonToolTip.SetToolTip(comboBoxMateria, "So aparece as materias que contem questoes");
+        }
     }
 }

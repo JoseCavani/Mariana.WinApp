@@ -127,6 +127,7 @@ namespace Mariana.WinApp.ModuloTeste
             this.comboBoxMateria.Name = "comboBoxMateria";
             this.comboBoxMateria.Size = new System.Drawing.Size(121, 23);
             this.comboBoxMateria.TabIndex = 33;
+            this.comboBoxMateria.MouseHover += new System.EventHandler(this.comboBoxMateria_MouseHover);
             // 
             // labelMateria
             // 
