@@ -75,7 +75,10 @@ namespace Mariana.WinApp.ModuloMateria
 
             if (resultado == DialogResult.OK)
             {
-                repositorioMateria.Excluir(MateriaSelecionada);
+                var validation = repositorioMateria.Excluir(MateriaSelecionada);
+
+                if (validation.Errors.Count > 0)
+                    MessageBox.Show(validation.Errors[0].ToString());
                 CarregarMaterias();
             }
         }

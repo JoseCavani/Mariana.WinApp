@@ -26,8 +26,17 @@ namespace Mariana.Infra.Arquivos.ModuloMateria
 
             var registros = ObterRegistros();
 
+            foreach (var item in dataContext.Teste)
+            {
+                if (item.Materia == registro)
+                {
+                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Testes contem essa materia, por favor deletar os testes correspondentes"));
+                    break;
+                }
+            }
 
-            if (registros.Remove(registro) == false)
+            if (resultadoValidacao.Errors.Count == 0)
+                if (registros.Remove(registro) == false)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
 
             if (resultadoValidacao.IsValid)

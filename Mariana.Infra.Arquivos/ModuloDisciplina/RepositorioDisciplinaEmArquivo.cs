@@ -39,8 +39,11 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
 
             foreach (var item in dataContext.Teste)
             {
-                if (item.Disciplina == registro)                
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Disciplina contem testes"));
+                if (item.Disciplina == registro)
+                {
+                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Testes contem essa disicplina, por favor deletar os testes correspondentes"));
+                    break;
+                }
             }
 
 
