@@ -81,12 +81,14 @@ namespace Mariana.WinApp.ModuloQuestao
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape("Selecionar um item correto");
                 DialogResult = DialogResult.None;
+                return;
             }
 
             if (checkedListBoxAlternativas.Items.Count == 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape("Adicione uma alternativa");
                 DialogResult = DialogResult.None;
+                return;
             }
 
 
