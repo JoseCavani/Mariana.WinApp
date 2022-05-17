@@ -30,11 +30,17 @@ namespace Mariana.WinApp
         private ControladorBase controlador;
         private Dictionary<string, ControladorBase> controladores;
         private DataContext contextoDados;
-        public  Disciplina disciplinaSelecionada = new();
+        public  Disciplina disciplinaSelecionada = new(); 
 
         public Teste testeAtual = new();
 
         public bool testeAtivo = false;
+
+
+        // as variaveis testeAtivo testeAtual e disciplinaSelecionada sao utilizados para poder ver so o controlador de questoes
+        //deveria iniciar com as questoes do teste selecionado ou da disciplina selecionado eu utilizo eles no botão de AtualizarQuestoes de cada
+        //um dos controladores respectivos, partindo de la da de ver o caminho que ele segue e o padrão para ser seguido
+
 
         public TelaPrincipalForm(DataContext contextoDados)
         {

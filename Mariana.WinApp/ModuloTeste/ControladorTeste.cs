@@ -84,7 +84,6 @@ namespace Mariana.WinApp.ModuloTeste
                 return;
             }
 
-            TelaPrincipalForm.Instancia.disciplinaSelecionada = TesteSelecionada.Disciplina;
             TelaPrincipalForm.Instancia.testeAtual = TesteSelecionada;
             TelaPrincipalForm.Instancia.testeAtivo = true;
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal("Teste");
