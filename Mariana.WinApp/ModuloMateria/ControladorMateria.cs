@@ -69,7 +69,7 @@ namespace Mariana.WinApp.ModuloMateria
        
 
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Materia?",
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a Materia?, isso excluira todos as questoes correspondentes",
                 "Exclusão de Materia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
 

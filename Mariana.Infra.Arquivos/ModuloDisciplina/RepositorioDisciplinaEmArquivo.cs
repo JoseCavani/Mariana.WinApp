@@ -33,15 +33,15 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
             var resultadoValidacao = validator.Validate(registro);
 
          
-            if (resultadoValidacao.IsValid == false || dataContext.Teste.Count == 0)
+            if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
 
-            foreach (var item in dataContext.Teste)
+            foreach (var item in dataContext.Materias)
             {
                 if (item.Disciplina == registro)
                 {
-                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Testes contem essa disicplina, por favor deletar os testes correspondentes"));
+                    resultadoValidacao.Errors.Add(new ValidationFailure("", "Materias contem essa disicplina, por favor deletar as materias correspondentes"));
                     break;
                 }
             }
@@ -53,10 +53,6 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
             if (dataContext.Disciplinas.Remove(registro) == false)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
 
-            if (resultadoValidacao.IsValid)
-            {
-                dataContext.Materias.RemoveAll(x => x.Disciplina == registro);
-            }
 
             return resultadoValidacao;
         }
