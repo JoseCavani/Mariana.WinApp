@@ -85,19 +85,24 @@ namespace Mariana.WinApp.ModuloTeste
 
             Random rnd = new Random();
 
+            List<Questao> q = new List<Questao>();
 
+            foreach (var item in teste.Disciplina.questoes)
+            {
+                q.Add(item);
+            }
 
             if (comboBoxMateria.SelectedItem.ToString() == "Todos")
             {
-                teste.Questoes = teste.Disciplina.questoes
+                teste.Questoes = q
                  .OrderBy(x => rnd.Next())
-                .Take(teste.NumeroQuestoes)
+                .Take((int)numericUpDownQuantidade.Value)
                 .ToList();
             }
 
             else
             {
-                teste.Questoes = teste.Disciplina.questoes.Where(x => x.materia == teste.Materia)
+                teste.Questoes = q.Where(x => x.materia == teste.Materia)
                     .ToList()
                     .OrderBy(x => rnd.Next())
                     .Take((int)numericUpDownQuantidade.Value)

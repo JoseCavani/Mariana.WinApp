@@ -38,7 +38,8 @@ namespace Mariana.Dominio.ModuloDisciplina
             {
                 Numero = this.Numero,
                 Titulo = this.Titulo,
-            };
+              questoes = this.questoes,
+          };
         }
 
        

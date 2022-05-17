@@ -288,6 +288,7 @@ namespace Mariana.WinApp.ModuloTeste
 
         public override void Inserir()
         {
+
             TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioTeste.ObterDiscplinas());
             tela.Teste = new Teste();
 
