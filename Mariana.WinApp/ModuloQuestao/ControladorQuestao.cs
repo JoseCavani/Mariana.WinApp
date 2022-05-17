@@ -15,8 +15,8 @@ namespace Mariana.WinApp.ModuloQuestao
     {
         private IRepositorioQuestao repositorioQuestao;
         private TabelaQuestaoControl tabelaQuestaos;
-        private List<Materia> materias;
-        private List<Questao> questaos;
+        private List<Materia> materias;// essa variavel e para usar no combobox da tela, ja vem pronta com as materias certas
+        private List<Questao> questaos;// essa variavel pode ser as questoes da discplina ou do teste e setado no obter listagem
 
         public ControladorQuestao(List<Questao> questaos,IRepositorioQuestao repositorioQuestao, List<Materia> materias)
         {
@@ -56,13 +56,6 @@ namespace Mariana.WinApp.ModuloQuestao
                 questaos.Remove(QuestaoSelecionada);
                 questaos.Add(tela.Questao);
 
-                if (TelaPrincipalForm.Instancia.testeAtivo)
-                {
-                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Remove(QuestaoSelecionada);
-                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Add(tela.Questao);
-                    TelaPrincipalForm.Instancia.testeAtivo = false;
-                }
-
                 CarregarQuestaos();
             }
         }
@@ -84,12 +77,6 @@ namespace Mariana.WinApp.ModuloQuestao
             if (resultado == DialogResult.OK)
             {
                 questaos.Remove(QuestaoSelecionada);
-
-                if (TelaPrincipalForm.Instancia.testeAtivo)
-                {
-                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Remove(QuestaoSelecionada);
-                }
-                else
                     repositorioQuestao.Excluir(QuestaoSelecionada);
                 CarregarQuestaos();
             }
@@ -107,10 +94,7 @@ namespace Mariana.WinApp.ModuloQuestao
             if (resultado == DialogResult.OK)
             {
                 questaos.Add(tela.Questao);
-                if (TelaPrincipalForm.Instancia.testeAtivo) 
-                {
-                    TelaPrincipalForm.Instancia.testeAtual.Questoes.Add(tela.Questao);
-                }
+              
                  CarregarQuestaos();
             }
         }

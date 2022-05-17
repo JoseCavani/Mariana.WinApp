@@ -84,6 +84,7 @@ namespace Mariana.WinApp.ModuloTeste
                 return;
             }
 
+            TelaPrincipalForm.Instancia.disciplinaSelecionada = TesteSelecionada.Disciplina;// aqui e para nao deixar ele defualt senão nao tem materia registrado dando um erro depois
             TelaPrincipalForm.Instancia.testeAtual = TesteSelecionada;
             TelaPrincipalForm.Instancia.testeAtivo = true;
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal("Teste");
