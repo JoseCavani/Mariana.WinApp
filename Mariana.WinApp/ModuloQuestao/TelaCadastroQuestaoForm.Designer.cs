@@ -141,6 +141,7 @@
             // 
             // checkedListBoxAlternativas
             // 
+            this.checkedListBoxAlternativas.CheckOnClick = true;
             this.checkedListBoxAlternativas.FormattingEnabled = true;
             this.checkedListBoxAlternativas.Location = new System.Drawing.Point(83, 156);
             this.checkedListBoxAlternativas.Name = "checkedListBoxAlternativas";

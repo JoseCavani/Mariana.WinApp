@@ -288,6 +288,7 @@ namespace Mariana.WinApp.ModuloTeste
 
             DialogResult resultado = tela.ShowDialog();
 
+
             if (resultado == DialogResult.OK)
             {
                 CarregarTestes();

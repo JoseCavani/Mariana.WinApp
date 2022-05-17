@@ -125,6 +125,10 @@ namespace Mariana.WinApp.ModuloTeste
           
             var resultadoValidacao = GravarRegistro(Teste);
 
+
+          
+
+
             if (resultadoValidacao.IsValid == false)
             {
 

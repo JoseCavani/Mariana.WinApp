@@ -125,6 +125,9 @@ namespace Mariana.WinApp.ModuloQuestao
 
             var resultadoValidacao = GravarRegistro(Questao);
 
+
+
+
             if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
