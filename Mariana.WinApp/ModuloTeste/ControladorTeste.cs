@@ -232,34 +232,19 @@ namespace Mariana.WinApp.ModuloTeste
 
         private Func<Teste,ValidationResult> ColocaNumeroNoTituloEInserir(TelaCadastroTesteForm tela)
         {
-                
 
-           char numero = tela.Teste.Titulo.Reverse().First();
+            var result = string.Concat(tela.Teste.Titulo.ToArray().Reverse().TakeWhile(char.IsNumber).Reverse());
             bool nomeEncontrado;
             string tituloTemporary;
 
 
-            if (int.TryParse(numero.ToString(), out int num))
+            if (int.TryParse(result.ToString(), out int num))
             {
                 do
                 {
-                    var charArray = tela.Teste.Titulo.ToCharArray();
+                    num++;
+                    tituloTemporary = tela.Teste.Titulo.Replace(result, num.ToString());
 
-                 tituloTemporary = "";
-
-                for (int i = 0; i < charArray.Length; i++)
-                {
-                    if (charArray[i] == numero)
-                    {
-                        continue;
-                    }
-
-                    tituloTemporary += charArray[i];
-
-                }
-                num++;
-              
-                    tituloTemporary += num;
 
                     nomeEncontrado = repositorioTeste.ObterRegistros()
          .Select(x => x.Titulo)
