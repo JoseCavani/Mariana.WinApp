@@ -13,8 +13,14 @@ namespace Mariana.Dominio.ModuloTeste
     public class Teste : EntidadeBase<Teste> , ICloneable
     {
         public DateTime Data { get ; set; }
-        public int NumeroQuestoes { get; set ; }
-        public List<Questao> Questoes { get ; set ; }
+        public int NumeroQuestoes
+        {
+            get 
+            {
+                return Questoes.Count;
+            }
+        }
+        public List<Questao> Questoes { get; set; }
         public Disciplina Disciplina { get ; set; }
         public Materia Materia { get; set; }
 
@@ -22,6 +28,7 @@ namespace Mariana.Dominio.ModuloTeste
         public Teste()
         {
             Data = DateTime.Now;
+            Questoes = new List<Questao>();
         }
 
         public override string ToString()
@@ -44,7 +51,6 @@ namespace Mariana.Dominio.ModuloTeste
         {
             this.Data = registro.Data;
             this.Titulo = registro.Titulo;
-            this.NumeroQuestoes = NumeroQuestoes;
             this.Questoes = registro.Questoes;
             this.Disciplina = registro.Disciplina;
             this.Materia = registro.Materia;
@@ -56,7 +62,6 @@ namespace Mariana.Dominio.ModuloTeste
             obj.Numero = this.Numero;
             obj.Data = Data;
             obj.Titulo = Titulo;
-            obj.NumeroQuestoes = NumeroQuestoes;
             obj.Questoes = Questoes;
             obj.Disciplina = Disciplina;
             obj.Materia = Materia;

@@ -87,7 +87,6 @@ namespace Mariana.WinApp.ModuloQuestao
                 if (TelaPrincipalForm.Instancia.testeAtivo)
                 {
                     TelaPrincipalForm.Instancia.testeAtual.Questoes.Remove(QuestaoSelecionada);
-                    TelaPrincipalForm.Instancia.testeAtual.NumeroQuestoes -= 1;
                 }
                 else
                     repositorioQuestao.Excluir(QuestaoSelecionada);
@@ -110,7 +109,6 @@ namespace Mariana.WinApp.ModuloQuestao
                 if (TelaPrincipalForm.Instancia.testeAtivo) 
                 {
                     TelaPrincipalForm.Instancia.testeAtual.Questoes.Add(tela.Questao);
-                    TelaPrincipalForm.Instancia.testeAtual.NumeroQuestoes += 1;
                 }
                  CarregarQuestaos();
             }

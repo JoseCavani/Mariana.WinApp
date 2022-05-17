@@ -85,7 +85,6 @@ namespace Mariana.WinApp.ModuloTeste
 
             Random rnd = new Random();
 
-            teste.NumeroQuestoes = (int)numericUpDownQuantidade.Value;
 
 
             if (comboBoxMateria.SelectedItem.ToString() == "Todos")
@@ -101,14 +100,23 @@ namespace Mariana.WinApp.ModuloTeste
                 teste.Questoes = teste.Disciplina.questoes.Where(x => x.materia == teste.Materia)
                     .ToList()
                     .OrderBy(x => rnd.Next())
-                    .Take(teste.NumeroQuestoes)
+                    .Take((int)numericUpDownQuantidade.Value)
                     .ToList();
+
+
             }
 
-          
             teste.Titulo = txtTitulo.Text.TrimEnd().TrimStart();
 
 
+
+
+            if (teste.Questoes.Count != (int)numericUpDownQuantidade.Value)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("não ha questoes suficientes com esses criterios");
+                DialogResult = DialogResult.None;
+                return;
+            }
           
             var resultadoValidacao = GravarRegistro(Teste);
 
