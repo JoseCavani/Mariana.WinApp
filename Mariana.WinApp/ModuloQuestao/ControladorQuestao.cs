@@ -53,8 +53,8 @@ namespace Mariana.WinApp.ModuloQuestao
 
             if (resultado == DialogResult.OK)
             {
-                questaos.Remove(QuestaoSelecionada);
-                questaos.Add(tela.Questao);
+               Questao questao =  questaos.Where(x => x.Numero == QuestaoSelecionada.Numero).Single();
+                questao = tela.Questao;
 
                 CarregarQuestaos();
             }
