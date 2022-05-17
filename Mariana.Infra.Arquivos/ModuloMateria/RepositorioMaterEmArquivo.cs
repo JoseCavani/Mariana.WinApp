@@ -19,6 +19,29 @@ namespace Mariana.Infra.Arquivos.ModuloMateria
                 contador = dataContext.Materias.Max(x => x.Numero);
         }
 
+        protected override ValidationResult Validar(Materia registro)
+        {
+            var validator = ObterValidador();
+
+            var resultadoValidacao = validator.Validate(registro);
+
+            if (resultadoValidacao.IsValid == false)
+                return resultadoValidacao;
+
+            bool nomeEncontrado =  false;
+
+            foreach (var item in ObterRegistros().Where(x => x.Numero != registro.Numero).ToList())
+            {
+                if (item.Titulo.ToLower() == registro.Titulo.ToLower() && item.Serie == registro.Serie)
+                    nomeEncontrado = true;
+            }
+
+
+            if (nomeEncontrado)
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Nome com essa serie já está cadastrado"));
+
+            return resultadoValidacao;
+        }
 
         public override ValidationResult Excluir(Materia registro)
         {

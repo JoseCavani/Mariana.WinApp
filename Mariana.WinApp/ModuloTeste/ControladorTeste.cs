@@ -85,16 +85,6 @@ namespace Mariana.WinApp.ModuloTeste
             }
 
             TelaPrincipalForm.Instancia.disciplinaSelecionada = TesteSelecionada.Disciplina;
-
-            List<Questao> questaos = new();
-
-            foreach (var item in repositorioTeste.SelecionarQuestoes())
-            {
-                if(TesteSelecionada.Questoes.Contains(item))
-                    questaos.Add(item);
-                
-            }
-            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = questaos;
             TelaPrincipalForm.Instancia.testeAtual = TesteSelecionada;
             TelaPrincipalForm.Instancia.testeAtivo = true;
             TelaPrincipalForm.Instancia.ConfigurarTelaPrincipal("Teste");

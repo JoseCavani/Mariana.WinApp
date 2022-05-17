@@ -16,12 +16,13 @@ namespace Mariana.WinApp.ModuloQuestao
         private IRepositorioQuestao repositorioQuestao;
         private TabelaQuestaoControl tabelaQuestaos;
         private List<Materia> materias;
-        private List<Questao> questaos = new();
+        private List<Questao> questaos;
 
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, List<Materia> materias)
+        public ControladorQuestao(List<Questao> questaos,IRepositorioQuestao repositorioQuestao, List<Materia> materias)
         {
             this.repositorioQuestao = repositorioQuestao;
             this.materias = materias;
+            this.questaos = questaos;
         }
 
         private Questao ObtemQuestaoSelecionada()
@@ -133,10 +134,10 @@ namespace Mariana.WinApp.ModuloQuestao
             if (tabelaQuestaos == null)
                 tabelaQuestaos = new TabelaQuestaoControl();
 
-
+            if (TelaPrincipalForm.Instancia.testeAtivo)
+                questaos = TelaPrincipalForm.Instancia.testeAtual.Questoes;
+            else
             questaos = TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes;
-
-            TelaPrincipalForm.Instancia.disciplinaSelecionada.questoes = questaos;
 
             CarregarQuestaos();
 

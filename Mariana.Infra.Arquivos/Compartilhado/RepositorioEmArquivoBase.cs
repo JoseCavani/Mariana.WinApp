@@ -10,7 +10,7 @@ namespace Marina.Infra.Arquivos
     {
         protected DataContext dataContext;
 
-        protected int contador = 0;
+        protected int contador = 1;
 
         protected T registro;
 

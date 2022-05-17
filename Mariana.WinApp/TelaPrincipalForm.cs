@@ -1,5 +1,6 @@
 ﻿using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloMateria;
+using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
 using Mariana.Infra.Arquivos.ModuloDisciplina;
 using Mariana.Infra.Arquivos.ModuloMateria;
@@ -242,9 +243,12 @@ namespace Mariana.WinApp
             if (!controladores.ContainsKey("Questao"))
             {
 
-                controladores.Add("Questao", new ControladorQuestao(repositorioQuestao, materias));
+                controladores.Add("Questao",new ControladorQuestao(new List<Questao>(), repositorioQuestao, materias));
             }
-            controladores["Questao"] = new ControladorQuestao(repositorioQuestao, materias);
+            if (testeAtivo)
+            controladores["Questao"] = new ControladorQuestao(testeAtual.Questoes,repositorioQuestao, materias);
+            else
+                controladores["Questao"] = new ControladorQuestao(disciplinaSelecionada.questoes, repositorioQuestao, materias);
         }
 
         private void InicializarControladores()
