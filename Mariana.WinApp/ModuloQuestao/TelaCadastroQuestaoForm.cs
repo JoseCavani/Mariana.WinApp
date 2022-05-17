@@ -75,11 +75,7 @@ namespace Mariana.WinApp.ModuloQuestao
         private void btnGravar_Click(object sender, EventArgs e)
         {
 
-            if (checkedListBoxAlternativas.Items.Count == 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape("Adicione uma alternativa");
-                DialogResult = DialogResult.None;
-            }
+    
 
             if (checkedListBoxAlternativas.CheckedItems.Count == 0)
             {
@@ -87,7 +83,11 @@ namespace Mariana.WinApp.ModuloQuestao
                 DialogResult = DialogResult.None;
             }
 
-         
+            if (checkedListBoxAlternativas.Items.Count == 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Adicione uma alternativa");
+                DialogResult = DialogResult.None;
+            }
 
 
             Questao.Titulo = txtQuestao.Text.TrimEnd().TrimStart();
