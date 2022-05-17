@@ -21,7 +21,7 @@ namespace Mariana.WinApp.ModuloTeste
 
         public override string TooltipGabarito => "Fazer um PDF dos gabaritos";
 
-        public override string TooltipPDF => "Biaxar um PDF das questoes";
+        public override string TooltipPDF => "Baixar um PDF das questoes";
 
         public override string TooltipDuplicar => "Duplicar o Teste";
 
