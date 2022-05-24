@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Mariana.Dominio.ModuloMateria;
 using Mariana.Dominio.ModuloQuestao;
 using Marina.Infra.Arquivos;
 using System;
@@ -47,6 +48,11 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
 
 
             return resultadoValidacao;
+        }
+
+        public List<Materia> Materias()
+        {
+            throw new NotImplementedException();
         }
 
         public override List<Questao> ObterRegistros()

@@ -40,11 +40,11 @@ namespace Mariana.WinApp.ModuloQuestao
                 txtNumero.Text = Questao.Numero.ToString();
                 txtQuestao.Text = Questao.Titulo;
 
-                 if(Questao.Bimestre == 2)
+                 if(Questao.bimestre == 2)
                     comboBoxBimestre.SelectedIndex = 1;
-                else if (Questao.Bimestre == 3)
+                else if (Questao.bimestre == 3)
                     comboBoxBimestre.SelectedIndex = 2;
-                else if (Questao.Bimestre == 4)
+                else if (Questao.bimestre == 4)
                     comboBoxBimestre.SelectedIndex = 3;
                 else
                     comboBoxBimestre.SelectedIndex = 0;
@@ -95,13 +95,13 @@ namespace Mariana.WinApp.ModuloQuestao
             Questao.Titulo = txtQuestao.Text.TrimEnd().TrimStart();
 
             if (comboBoxBimestre.SelectedIndex == 0)
-                Questao.Bimestre = 1;
+                Questao.bimestre = 1;
             else if (comboBoxBimestre.SelectedIndex == 1)
-                Questao.Bimestre = 2;
+                Questao.bimestre = 2;
             else if (comboBoxBimestre.SelectedIndex == 2)
-                Questao.Bimestre = 3;
+                Questao.bimestre = 3;
             else if (comboBoxBimestre.SelectedIndex == 3)
-                Questao.Bimestre = 4;
+                Questao.bimestre = 4;
 
             Questao.materia = (Materia)comboBoxMateria.SelectedItem;
 

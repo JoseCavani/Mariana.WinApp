@@ -18,10 +18,10 @@ namespace Mariana.WinApp.ModuloQuestao
         private List<Materia> materias;// essa variavel e para usar no combobox da tela, ja vem pronta com as materias certas
         private List<Questao> questaos;// essa variavel pode ser as questoes da discplina ou do teste e setado no obter listagem
 
-        public ControladorQuestao(List<Questao> questaos,IRepositorioQuestao repositorioQuestao, List<Materia> materias)
+        public ControladorQuestao(List<Questao> questaos,IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioQuestao = repositorioQuestao;
-            this.materias = materias;
+            this.materias = repositorioQuestao.Materias();
             this.questaos = questaos;
         }
 
