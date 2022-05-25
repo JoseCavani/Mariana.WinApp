@@ -21,7 +21,7 @@ namespace Mariana.WinApp.ModuloQuestao
         public ControladorQuestao(List<Questao> questaos,IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioQuestao = repositorioQuestao;
-            this.materias = repositorioQuestao.Materias();
+            this.materias = repositorioQuestao.Materias(TelaPrincipalForm.Instancia.disciplinaSelecionada);
             this.questaos = questaos;
         }
 
@@ -76,13 +76,14 @@ namespace Mariana.WinApp.ModuloQuestao
 
             if (resultado == DialogResult.OK)
             {
+                Questao q = questaos.Find(x => x.Numero == QuestaoSelecionada.Numero);
                 if (TelaPrincipalForm.Instancia.testeAtivo)
                 {
-                    questaos.Remove(QuestaoSelecionada);
+                    questaos.Remove(q);
                 }
                 else
                 {
-                    questaos.Remove(QuestaoSelecionada);
+                    questaos.Remove(q);
                     repositorioQuestao.Excluir(QuestaoSelecionada);
                 }
                 CarregarQuestaos();
@@ -108,7 +109,6 @@ namespace Mariana.WinApp.ModuloQuestao
 
         private void CarregarQuestaos()
         {
-         
 
             tabelaQuestaos.AtualizarRegistros(questaos);
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {questaos.Count} Questaos(s)");

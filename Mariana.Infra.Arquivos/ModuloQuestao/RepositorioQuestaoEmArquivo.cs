@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloMateria;
 using Mariana.Dominio.ModuloQuestao;
 using Marina.Infra.Arquivos;
@@ -51,6 +52,11 @@ namespace Mariana.Infra.Arquivos.ModuloQuestao
         }
 
         public List<Materia> Materias()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Materia> Materias(Disciplina discplina)
         {
             throw new NotImplementedException();
         }

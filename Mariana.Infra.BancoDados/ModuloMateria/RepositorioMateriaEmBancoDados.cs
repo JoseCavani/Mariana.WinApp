@@ -45,8 +45,8 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
         private const string sqlEditar =
            @"UPDATE [TBMATERIA]	
 		        SET
-			        [TITULO] = @TITULO
-                    [SERIE] = @SERIE
+			        [TITULO] = @TITULO,
+                    [SERIE] = @SERIE,
                     [DISCPLINA_ID] = @DISCPLINA_ID
 		        WHERE
 			        [NUMERO] = @NUMERO";

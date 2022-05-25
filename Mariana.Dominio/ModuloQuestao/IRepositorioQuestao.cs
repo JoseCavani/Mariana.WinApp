@@ -1,4 +1,5 @@
-﻿using Mariana.Dominio.ModuloMateria;
+﻿using Mariana.Dominio.ModuloDisciplina;
+using Mariana.Dominio.ModuloMateria;
 using Marina.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Mariana.Dominio.ModuloQuestao
 {
     public interface IRepositorioQuestao : IRepositorio<Questao>
     {
-        public List<Materia> Materias();
+        public List<Materia> Materias(Disciplina discplina);
+
     }
 }
