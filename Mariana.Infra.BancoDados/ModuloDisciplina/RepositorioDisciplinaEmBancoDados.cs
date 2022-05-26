@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using Mariana.Dominio.ModuloDisciplina;
+using Mariana.Dominio.ModuloMateria;
 using Mariana.Dominio.ModuloQuestao;
 using System;
 using System.Collections.Generic;
@@ -35,12 +36,16 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
 
         private const string sqlSelecionarQuestoes =
             @"SELECT 
-		            Q.[NUMERO],
-		            Q.[TITULO],
+		            Q.[NUMERO] AS NUMERO,
+		            Q.[TITULO] AS TITULO,
                     Q.[BIMESTRE],
-                    Q.[MATERIA_NUMERO]
+                    Q.[MATERIA_NUMERO],
+                    M.[NUMERO] AS NUMEROMATERIA,
+                    M.[TITULO] AS TITULOMATERIA,
+                    M.[SERIE],
+                    M.[DISCPLINA_ID]
 	           FROM
-                [TBQuestao] AS Q INNER JOIN 
+                [TBQUESTAO] AS Q INNER JOIN 
                 [TBMATERIA] AS M
             ON
               M.Numero = Q.Materia_Numero 
@@ -193,7 +198,7 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
             return registro;
         }
 
-        private static Disciplina ConverterParaRegistro(SqlDataReader leitor)
+        private  Disciplina ConverterParaRegistro(SqlDataReader leitor)
         {
             int id = Convert.ToInt32(leitor["ID"]);
             string titulo = Convert.ToString(leitor["TITULO"]);
@@ -203,6 +208,7 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
                 Numero = id,
                 Titulo = titulo,
             };
+            disciplina.questoes = SelecionarQuestoes(disciplina);
 
             return disciplina;
         }
@@ -216,12 +222,23 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
         }
 
 
-        private Questao ConverterParaQuestao(SqlDataReader leitor)
+        private Questao ConverterParaQuestao(SqlDataReader leitor,Disciplina discplina)
         {
             int id = Convert.ToInt32(leitor["NUMERO"]);
             string titulo = Convert.ToString(leitor["TITULO"]);
             int bimestre = Convert.ToInt32(leitor["BIMESTRE"]);
 
+            int idMateria = Convert.ToInt32(leitor["NUMEROMATERIA"]);
+            string tituloMateria = Convert.ToString(leitor["TITULOMATERIA"]);
+            int serie = Convert.ToInt32(leitor["SERIE"]);
+
+            var materia = new Materia
+            {
+                Titulo = tituloMateria,
+                Numero = idMateria,
+                Serie = serie,
+                Disciplina = discplina,
+            };
 
 
             var Questao = new Questao
@@ -229,6 +246,7 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
                 Numero = id,
                 Titulo = titulo,
                 bimestre = bimestre,
+                materia = materia,
             };
 
 
@@ -250,7 +268,7 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
 
             while (leitor.Read())
             {
-                Questao registro = ConverterParaQuestao(leitor);
+                Questao registro = ConverterParaQuestao(leitor, novoRegistro);
 
                 registros.Add(registro);
             }

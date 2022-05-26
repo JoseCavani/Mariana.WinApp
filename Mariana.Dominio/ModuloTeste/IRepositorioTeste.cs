@@ -11,8 +11,5 @@ namespace Mariana.Dominio.ModuloTeste
 {
     public interface IRepositorioTeste : IRepositorio<Teste>
     {
-        List<Questao> SelecionarQuestoes();
-        List<Disciplina> ObterDiscplinas();
-        List<Teste> ObterRegistros();
     }
 }

@@ -9,6 +9,7 @@ using Mariana.Infra.Arquivos.ModuloTeste;
 using Mariana.Infra.BancoDados.ModuloDisciplina;
 using Mariana.Infra.BancoDados.ModuloMateria;
 using Mariana.Infra.BancoDados.ModuloQuestao;
+using Mariana.Infra.BancoDados.ModuloTeste;
 using Mariana.WinApp.Compartilhado;
 using Mariana.WinApp.ModuloDisciplina;
 using Mariana.WinApp.ModuloMateria;
@@ -238,7 +239,7 @@ namespace Mariana.WinApp
 
             var repositorioMateria = new RepositorioMateriaEmBancoDados(repositorioDisciplina);
 
-            var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
+            var repositorioTeste = new RepositorioTesteEmBancoDados();
 
 
 
@@ -248,7 +249,7 @@ namespace Mariana.WinApp
 
             controladores.Add("Materia", new ControladorMateria(repositorioMateria));
 
-            controladores.Add("Teste", new ControladorTeste(repositorioTeste));
+            controladores.Add("Teste", new ControladorTeste(repositorioTeste, repositorioDisciplina));
         }
 
       

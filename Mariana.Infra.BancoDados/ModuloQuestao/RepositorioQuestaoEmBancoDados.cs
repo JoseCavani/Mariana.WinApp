@@ -318,6 +318,20 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public List<Materia> Materias(Disciplina discplina)
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
