@@ -14,7 +14,7 @@ namespace Mariana.Dominio.ModuloQuestao
 
         public Dictionary<string,bool> opcoes = new();
         public Materia materia;
-        public  int Bimestre;
+        public int bimestre;
 
         public override string ToString()
         {
@@ -35,7 +35,7 @@ namespace Mariana.Dominio.ModuloQuestao
             this.Titulo = registro.Titulo;
             this.opcoes = registro.opcoes;
             this.materia = registro.materia;
-            this.Bimestre = registro.Bimestre;
+            this.bimestre = registro.bimestre;
         }
 
     
@@ -47,7 +47,7 @@ namespace Mariana.Dominio.ModuloQuestao
                 Titulo = this.Titulo,
                 opcoes = this.opcoes,
                 materia = this.materia,
-                Bimestre = this.Bimestre,
+                bimestre = this.bimestre,
             };
         }
     }

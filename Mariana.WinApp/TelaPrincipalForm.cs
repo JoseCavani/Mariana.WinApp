@@ -6,6 +6,10 @@ using Mariana.Infra.Arquivos.ModuloDisciplina;
 using Mariana.Infra.Arquivos.ModuloMateria;
 using Mariana.Infra.Arquivos.ModuloQuestao;
 using Mariana.Infra.Arquivos.ModuloTeste;
+using Mariana.Infra.BancoDados.ModuloDisciplina;
+using Mariana.Infra.BancoDados.ModuloMateria;
+using Mariana.Infra.BancoDados.ModuloQuestao;
+using Mariana.Infra.BancoDados.ModuloTeste;
 using Mariana.WinApp.Compartilhado;
 using Mariana.WinApp.ModuloDisciplina;
 using Mariana.WinApp.ModuloMateria;
@@ -160,22 +164,7 @@ namespace Mariana.WinApp
                 return;
             }
 
-            List<Materia> materias = new List<Materia>();
-            foreach (var item in contextoDados.Materias)
-            {
-                if (item.Disciplina == disciplinaSelecionada)
-                {
-                    materias.Add(item);
-                }
-            }
-            if (materias.Count == 0)
-            {
-                AtualizarRodape("registre uma materia com essa disciplina primeiro");
-                return;
-            }
-
-
-            IniciaControladorQuestao(materias);
+            IniciaControladorQuestao();
 
             controlador = controladores["Questao"];
 
@@ -189,19 +178,6 @@ namespace Mariana.WinApp
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
         {
             var tipo = opcaoSelecionada.Text;
-
-            if (tipo != "Disciplina" && contextoDados.Disciplinas.Count == 0)
-            {
-                AtualizarRodape("cadastre uma disciplina primeiro");
-                return;
-            }
-
-            if (tipo == "Teste" && contextoDados.Materias.Count == 0 && contextoDados.Teste.Count == 0)
-            {
-                AtualizarRodape("cadastre uma Materia primeiro");
-                return;
-            }
-
 
 
             controlador = controladores[tipo];
@@ -242,28 +218,28 @@ namespace Mariana.WinApp
         }
 
 
-        private void IniciaControladorQuestao(List<Materia> materias)
+        private void IniciaControladorQuestao()
         {
 
-            var repositorioQuestao = new RepositorioQuestaoEmArquivo(contextoDados);
+            var repositorioQuestao = new RepositorioQuestaoEmBancoDados();
             if (!controladores.ContainsKey("Questao"))
             {
 
-                controladores.Add("Questao",new ControladorQuestao(new List<Questao>(), repositorioQuestao, materias));
+                controladores.Add("Questao",new ControladorQuestao(new List<Questao>(), repositorioQuestao));
             }
             if (testeAtivo)
-            controladores["Questao"] = new ControladorQuestao(testeAtual.Questoes,repositorioQuestao, materias);
+            controladores["Questao"] = new ControladorQuestao(testeAtual.Questoes,repositorioQuestao);
             else
-                controladores["Questao"] = new ControladorQuestao(disciplinaSelecionada.questoes, repositorioQuestao, materias);
+                controladores["Questao"] = new ControladorQuestao(disciplinaSelecionada.questoes, repositorioQuestao);
         }
 
         private void InicializarControladores()
         {
-            var repositorioDisciplina = new RepositorioDisciplinaEmArquivo(contextoDados);
+            var repositorioDisciplina = new RepositorioDisciplinaEmBancoDados();
 
-            var repositorioMateria = new RepositorioMaterEmArquivo(contextoDados);
+            var repositorioMateria = new RepositorioMateriaEmBancoDados(repositorioDisciplina);
 
-            var repositorioTeste = new RepositorioTesteEmArquivo(contextoDados);
+            var repositorioTeste = new RepositorioTesteEmBancoDados();
 
 
 
@@ -273,7 +249,7 @@ namespace Mariana.WinApp
 
             controladores.Add("Materia", new ControladorMateria(repositorioMateria));
 
-            controladores.Add("Teste", new ControladorTeste(repositorioTeste));
+            controladores.Add("Teste", new ControladorTeste(repositorioTeste, repositorioDisciplina));
         }
 
       

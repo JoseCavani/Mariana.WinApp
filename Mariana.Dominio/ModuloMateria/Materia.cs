@@ -25,7 +25,11 @@ namespace Mariana.Dominio.ModuloMateria
         {
 
         }
-
+        public override bool Equals(object obj2)
+        {
+            Materia obj = obj2 as Materia;
+            return obj != null && obj.Numero == this.Numero;
+        }
 
         public override string ToString()
         {

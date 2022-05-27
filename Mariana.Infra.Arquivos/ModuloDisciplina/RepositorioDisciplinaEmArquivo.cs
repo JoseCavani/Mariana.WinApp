@@ -103,5 +103,10 @@ namespace Mariana.Infra.Arquivos.ModuloDisciplina
             else
                 return contador;
         }
+
+        public List<Questao> SelecionarQuestoes(Disciplina dispclina)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -10,6 +10,6 @@ namespace Mariana.Dominio.ModuloDisciplina
 {
     public interface IRepositorioDisciplina : IRepositorio<Disciplina>
     {
-        List<Questao> SelecionarQuestoes();
+        List<Questao> SelecionarQuestoes(Disciplina dispclina);
     }
 }

@@ -18,10 +18,12 @@ namespace Mariana.WinApp.ModuloTeste
     {
         private IRepositorioTeste repositorioTeste;
         private TabelaTesteControl tabelaTestes;
+        private IRepositorioDisciplina repositorioDisciplina;
 
-        public ControladorTeste(IRepositorioTeste repositorioTeste)
+        public ControladorTeste(IRepositorioTeste repositorioTeste, IRepositorioDisciplina repositorioDisciplina)
         {
             this.repositorioTeste = repositorioTeste;
+            this.repositorioDisciplina = repositorioDisciplina;
         }
 
         private Teste ObtemTesteSelecionada()
@@ -101,7 +103,7 @@ namespace Mariana.WinApp.ModuloTeste
                 return;
             }
 
-            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioTeste.ObterDiscplinas());
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioDisciplina.SelecionarTodos());
 
             tela.Teste = (Teste)TesteSelecionada.Clone();
 
@@ -198,7 +200,7 @@ namespace Mariana.WinApp.ModuloTeste
                 return;
             }
 
-            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioTeste.ObterDiscplinas());
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioDisciplina.SelecionarTodos());
 
             tela.Teste = (Teste)TesteSelecionada.Clone();
 
@@ -236,7 +238,7 @@ namespace Mariana.WinApp.ModuloTeste
                     tituloTemporary = tela.Teste.Titulo.Replace(result, num.ToString());
 
 
-                    nomeEncontrado = repositorioTeste.ObterRegistros()
+                    nomeEncontrado = repositorioTeste.SelecionarTodos()
          .Select(x => x.Titulo)
          .Contains(tituloTemporary);
                 } while (nomeEncontrado);
@@ -259,7 +261,7 @@ namespace Mariana.WinApp.ModuloTeste
                     tituloTemporary += $" {contador.ToString()}";
 
 
-                    nomeEncontrado = repositorioTeste.ObterRegistros()
+                    nomeEncontrado = repositorioTeste.SelecionarTodos()
              .Select(x => x.Titulo)
              .Contains(tituloTemporary);
 
@@ -279,7 +281,7 @@ namespace Mariana.WinApp.ModuloTeste
         public override void Inserir()
         {
 
-            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioTeste.ObterDiscplinas());
+            TelaCadastroTesteForm tela = new TelaCadastroTesteForm(repositorioDisciplina.SelecionarTodos());
             tela.Teste = new Teste();
 
             tela.GravarRegistro = repositorioTeste.Inserir;

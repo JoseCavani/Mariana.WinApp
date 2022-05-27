@@ -18,10 +18,12 @@ namespace Mariana.WinApp.ModuloTeste
     public partial class TelaCadastroTesteForm : Form
     {
         private Teste teste;
+        List<Disciplina> disciplinas;
         public TelaCadastroTesteForm(List<Disciplina> disciplinas)
         {
             InitializeComponent();
             comboBoxDisciplina.Items.AddRange(disciplinas.ToArray());
+            this.disciplinas = disciplinas;
           
         }
 
@@ -40,9 +42,14 @@ namespace Mariana.WinApp.ModuloTeste
 
                 txtTitulo.Text = teste.Titulo;
 
-                comboBoxDisciplina.SelectedItem = teste.Disciplina;
+                if (teste.Disciplina != null)
+                comboBoxDisciplina.SelectedItem = disciplinas.Where(x => x.Numero == teste.Disciplina.Numero).Single();
 
+
+                if(teste.Materia != null)
                 comboBoxMateria.SelectedItem = teste.Materia;
+
+
                 if (teste.Materia == null)
                     comboBoxMateria.SelectedIndex = 0;
 
@@ -51,7 +58,6 @@ namespace Mariana.WinApp.ModuloTeste
 
 
                 numericUpDownQuantidade.Value = teste.NumeroQuestoes;
-
 
 
             }

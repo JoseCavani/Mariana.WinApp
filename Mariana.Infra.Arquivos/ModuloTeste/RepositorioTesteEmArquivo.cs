@@ -30,9 +30,8 @@ namespace Mariana.Infra.Arquivos.ModuloTeste
 
         public override List<Teste> ObterRegistros()
         {
-            return dataContext.Teste;
+            throw new NotImplementedException();
         }
-
 
         public override AbstractValidator<Teste> ObterValidador()
         {

@@ -30,8 +30,6 @@ namespace Mariana.WinApp.ModuloQuestao
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Questão", HeaderText = "Questão"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Materia", HeaderText = "Materia"},
-
                 new DataGridViewTextBoxColumn { DataPropertyName = "Bimestre", HeaderText = "Bimestre"},
             };
 
@@ -49,7 +47,7 @@ namespace Mariana.WinApp.ModuloQuestao
 
             foreach (Questao questao in questeos)
             {
-                grid.Rows.Add(questao.Numero, questao.Titulo, questao.materia.Titulo + " " + questao.materia.Serie + "ª", questao.Bimestre+"ª");
+                grid.Rows.Add(questao.Numero, questao.Titulo, questao.bimestre+"ª");
             }
         }
 
