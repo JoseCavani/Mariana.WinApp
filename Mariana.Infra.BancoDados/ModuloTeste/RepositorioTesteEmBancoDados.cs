@@ -65,13 +65,19 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
                     T.[NUMEROQUESTOES],
                     T.[DISCPLINA_ID],
                     T.[MATERIA_NUMERO],
+                    M.[Numero] AS NUMEROMATERIA,
+                    M.[TITULO] AS TITULOMATERIA,
+                    M.[SERIE] AS SERIE,
                     D.[ID],
                     D.[TITULO] AS DISCPLINATITULO
 	            FROM 
 		            [TBTESTE] AS T INNER JOIN
 					[TBDisciplina] AS D 
 					ON
-					D.Id = T.Discplina_id";
+					D.Id = T.Discplina_id INNER JOIN
+                    [TBMateria] AS M
+                    ON
+                    T.[Materia_Numero] = M.Numero";
 
         private const string sqlSelecionarPorID =
             @"SELECT 
@@ -81,13 +87,19 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
                     T.[DISCPLINA_ID],
                     T.[DATA],
                     T.[MATERIA_NUMERO],
+                    M.[Numero] AS NUMEROMATERIA,
+                    M.[TITULO] AS TITULOMATERIA,
+                    M.[SERIE] AS SERIE,
                     D.[ID],
                     D.[TITULO] AS DISCPLINATITULO
 	            FROM 
 		            [TBTESTE] AS T INNER JOIN
 					[TBDisciplina] AS D 
 					ON
-					D.Id = T.Discplina_id 
+					D.Id = T.Discplina_id   INNER JOIN
+                    [TBMateria] AS M
+                    ON
+                    T.[Materia_Numero] = M.Numero
                   WHERE
                    T.[NUMERO] = @NUMERO";
 
