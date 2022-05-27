@@ -1,8 +1,10 @@
-﻿using FluentValidation.Results;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloMateria;
 using Mariana.Dominio.ModuloQuestao;
 using Mariana.Dominio.ModuloTeste;
+using Mariana.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Mariana.Infra.BancoDados.ModuloTeste
 {
-    public class RepositorioTesteEmBancoDados : IRepositorioTeste
+    public class RepositorioTesteEmBancoDados : RepositorioEmBancoBase<Teste>, IRepositorioTeste
     {
         private const string enderecoBanco =
             "Data Source=(LocalDB)\\MSSqlLocalDB;" +
@@ -138,14 +140,16 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 
         public ValidationResult Inserir(Teste novoRegistro)
         {
-            var validador = new ValidadorTeste();
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
-            var resultadoValidacao = validador.Validate(novoRegistro);
+            conexaoComBanco.Open();
+
+
+            var resultadoValidacao = Validar("SELECT * FROM TBTESTE WHERE ([TITULO] = '" + novoRegistro.Titulo + "')", novoRegistro, conexaoComBanco);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoInsercao = new SqlCommand(sqlInserir, conexaoComBanco);
 
@@ -153,7 +157,6 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 
             ConfigurarParametros(novoRegistro, comandoInsercao);
 
-            conexaoComBanco.Open();
             var id = comandoInsercao.ExecuteScalar();
             novoRegistro.Numero = Convert.ToInt32(id);
 
@@ -180,20 +183,20 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 
         public ValidationResult Editar(Teste novoRegistro)
         {
-            var validador = new ValidadorTeste();
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
-            var resultadoValidacao = validador.Validate(novoRegistro);
+            conexaoComBanco.Open();
+
+            var resultadoValidacao = Validar("SELECT * FROM TBTESTE WHERE ([TITULO] = '" + novoRegistro.Titulo + "')", novoRegistro, conexaoComBanco);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
 
             ConfigurarParametros(novoRegistro, comandoEdicao);
 
-            conexaoComBanco.Open();
             comandoEdicao.ExecuteNonQuery();
             conexaoComBanco.Close();
 
@@ -429,9 +432,12 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
             comando.Parameters.AddWithValue("NUMERO_TESTE", novoRegistro.Numero);
             comando.Parameters.AddWithValue("NUMERO_QUESTAO", questao.Numero);
         }
-        
 
 
+        protected override AbstractValidator<Teste> ObterValidador()
+        {
+            return new ValidadorTeste();
+        }
 
     }
 }

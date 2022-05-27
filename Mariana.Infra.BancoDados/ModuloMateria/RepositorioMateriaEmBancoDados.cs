@@ -1,6 +1,8 @@
-﻿using FluentValidation.Results;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloMateria;
+using Mariana.Infra.BancoDados.Compartilhado;
 using Mariana.Infra.BancoDados.ModuloDisciplina;
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Mariana.Infra.BancoDados.ModuloMateria
 {
-    public class RepositorioMateriaEmBancoDados : IRepositorioMateria
+    public class RepositorioMateriaEmBancoDados : RepositorioEmBancoBase<Materia>, IRepositorioMateria
     {
         private RepositorioDisciplinaEmBancoDados repositorioDiscplinaEmBancoDados;
         public RepositorioMateriaEmBancoDados(RepositorioDisciplinaEmBancoDados repositorioDiscplinaEmBancoDados)
@@ -69,7 +71,7 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
             @"SELECT 
 		            [NUMERO], 
 		            [TITULO],
-                    [SERIE]
+                    [SERIE],
                     [DISCPLINA_ID]
 	            FROM 
 		            [TBMATERIA]
@@ -80,20 +82,21 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
 
         public ValidationResult Inserir(Materia novoRegistro)
         {
-            var validador = new ValidadorMateria();
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
-            var resultadoValidacao = validador.Validate(novoRegistro);
+            conexaoComBanco.Open();
+
+
+            var resultadoValidacao = Validar("SELECT * FROM TBMATERIA WHERE ([TITULO] = '" + novoRegistro.Titulo + "')", novoRegistro, conexaoComBanco);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoInsercao = new SqlCommand(sqlInserir, conexaoComBanco);
 
             ConfigurarParametros(novoRegistro, comandoInsercao);
 
-            conexaoComBanco.Open();
             var id = comandoInsercao.ExecuteScalar();
             novoRegistro.Numero = Convert.ToInt32(id);
 
@@ -105,20 +108,21 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
 
         public ValidationResult Editar(Materia novoRegistro)
         {
-            var validador = new ValidadorMateria();
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
-            var resultadoValidacao = validador.Validate(novoRegistro);
+            conexaoComBanco.Open();
+
+
+            var resultadoValidacao = Validar("SELECT * FROM TBMATERIA WHERE ([TITULO] = '" + novoRegistro.Titulo + "')", novoRegistro, conexaoComBanco);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
 
             ConfigurarParametros(novoRegistro, comandoEdicao);
 
-            conexaoComBanco.Open();
             comandoEdicao.ExecuteNonQuery();
             conexaoComBanco.Close();
 
@@ -127,6 +131,8 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
 
         public ValidationResult Excluir(Materia novoRegistro)
         {
+            var resultadoValidacao = new ValidationResult();
+            int IDRegistrosExcluidos = 0;
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexaoComBanco);
@@ -134,9 +140,16 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
             comandoExclusao.Parameters.AddWithValue("NUMERO", novoRegistro.Numero);
 
             conexaoComBanco.Open();
-            int IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
+            try
+            {
+                IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "existe teste com essa materia"));
+            }
 
-            var resultadoValidacao = new ValidationResult();
+
 
             if (IDRegistrosExcluidos == 0)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
@@ -216,7 +229,7 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
 
 
 
-        private  void ConfigurarParametros(Materia novoRegistro, SqlCommand comando)
+        private void ConfigurarParametros(Materia novoRegistro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("NUMERO", novoRegistro.Numero);
             comando.Parameters.AddWithValue("TITULO", novoRegistro.Titulo);
@@ -227,6 +240,11 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
         public List<Disciplina> ObterDisciplinas()
         {
             return repositorioDiscplinaEmBancoDados.SelecionarTodos();
+        }
+
+        protected override AbstractValidator<Materia> ObterValidador()
+        {
+            return new ValidadorMateria();
         }
     }
 }

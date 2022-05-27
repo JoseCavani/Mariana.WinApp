@@ -1,7 +1,9 @@
-﻿using FluentValidation.Results;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using Mariana.Dominio.ModuloDisciplina;
 using Mariana.Dominio.ModuloMateria;
 using Mariana.Dominio.ModuloQuestao;
+using Mariana.Infra.BancoDados.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Mariana.Infra.BancoDados.ModuloDisciplina
 {
-    public class RepositorioDisciplinaEmBancoDados : IRepositorioDisciplina
+    public class RepositorioDisciplinaEmBancoDados : RepositorioEmBancoBase<Disciplina>, IRepositorioDisciplina
     {
 
         private const string enderecoBanco =
@@ -89,20 +91,22 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
 
         public ValidationResult Inserir(Disciplina novoRegistro)
         {
-            var validador = new ValidadorDisciplina();
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
-            var resultadoValidacao = validador.Validate(novoRegistro);
+            conexaoComBanco.Open();
+
+
+            var resultadoValidacao = Validar("SELECT * FROM TBDISCIPLINA WHERE ([TITULO] = '" + novoRegistro.Titulo + "')",novoRegistro, conexaoComBanco);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+      
 
             SqlCommand comandoInsercao = new SqlCommand(sqlInserir, conexaoComBanco);
 
             ConfigurarParametrosDiscplina(novoRegistro, comandoInsercao);
 
-            conexaoComBanco.Open();
             var id = comandoInsercao.ExecuteScalar();
             novoRegistro.Numero = Convert.ToInt32(id);
 
@@ -114,20 +118,20 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
 
         public ValidationResult Editar(Disciplina novoRegistro)
         {
-            var validador = new ValidadorDisciplina();
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+            conexaoComBanco.Open();
 
-            var resultadoValidacao = validador.Validate(novoRegistro);
+
+            var resultadoValidacao = Validar("SELECT * FROM TBDISCIPLINA WHERE ([TITULO] = '" + novoRegistro.Titulo + "')", novoRegistro, conexaoComBanco);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
 
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
 
             ConfigurarParametrosDiscplina(novoRegistro, comandoEdicao);
 
-            conexaoComBanco.Open();
             comandoEdicao.ExecuteNonQuery();
             conexaoComBanco.Close();
 
@@ -276,6 +280,11 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
             conexaoComBanco.Close();
 
             return registros;
+        }
+
+        protected override AbstractValidator<Disciplina> ObterValidador()
+        {
+            return new ValidadorDisciplina();
         }
     }
 }
