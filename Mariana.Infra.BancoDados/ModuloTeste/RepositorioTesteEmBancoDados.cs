@@ -91,6 +91,38 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
                   WHERE
                    T.[NUMERO] = @NUMERO";
 
+        private const string sqlInserirQuestoes =
+        @"INSERT INTO [TBTesteQuestao] 
+                (
+                    [NUMERO_QUESTAO],
+                    [NUMERO_TESTE]
+	            )
+	            VALUES
+                (
+                    @NUMERO_QUESTAO,
+                    @NUMERO_TESTE
+                );";
+
+
+        private const string sqlSelecionarQuestoes =
+             @"SELECT 
+                    Q.[NUMERO] AS NUMERO,
+		            Q.[TITULO] AS TITULO,
+                    Q.[BIMESTRE] AS BIMESTRE,
+                    Q.[MATERIA_NUMERO]
+	            FROM 
+		            [TBQUESTAO] AS Q INNER JOIN
+                    [TBTESTEQUESTAO] AS TQ
+                ON 
+                    Q.NUMERO = TQ.NUMERO_QUESTAO INNER JOIN
+                    [TBTESTE] AS T
+                ON
+                    T.NUMERO = TQ.NUMERO_TESTE
+                WHERE
+                    T.NUMERO = @NUMERO
+";
+
+
 
         public ValidationResult Inserir(Teste novoRegistro)
         {
@@ -105,11 +137,28 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 
             SqlCommand comandoInsercao = new SqlCommand(sqlInserir, conexaoComBanco);
 
+            SqlCommand InserirQuestoes = new SqlCommand(sqlInserirQuestoes, conexaoComBanco);
+
             ConfigurarParametros(novoRegistro, comandoInsercao);
 
             conexaoComBanco.Open();
             var id = comandoInsercao.ExecuteScalar();
             novoRegistro.Numero = Convert.ToInt32(id);
+
+
+            foreach (var item in novoRegistro.Questoes)
+            {
+
+                ConfigurarParametrosQuestao(item,novoRegistro,InserirQuestoes);
+
+                InserirQuestoes.ExecuteScalar();
+
+
+
+            }
+
+
+
 
             conexaoComBanco.Close();
 
@@ -161,11 +210,83 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
         }
 
 
+
+        private Questao ConverterParaQuestao(SqlDataReader leitor, SqlConnection conexaoComBanco)
+        {
+            int id = Convert.ToInt32(leitor["NUMERO"]);
+            string titulo = Convert.ToString(leitor["TITULO"]);
+            int bimestre = Convert.ToInt32(leitor["BIMESTRE"]);
+
+
+            Dictionary<string, bool> dic = ReceberAlternativas(conexaoComBanco, id);
+
+            var Questao = new Questao
+            {
+                Numero = id,
+                Titulo = titulo,
+                bimestre = bimestre,
+                opcoes = dic,
+            };
+
+            //todo
+            return Questao;
+
+         
+        }
+
+        private const string sqlSelecionarAlternativas =
+       @"SELECT 
+		            [TITULO],
+                    [CORRETA]
+	            FROM 
+		            [TBALTERNATIVAS]
+		        WHERE
+                    [QUESTAO_NUMERO] = @NUMERO";
+
+
+        private Dictionary<string, bool> ReceberAlternativas(SqlConnection conexaoComBanco, int id)
+        {
+            SqlCommand comandoSelecaoAlternativa = new SqlCommand(sqlSelecionarAlternativas, conexaoComBanco);
+
+            comandoSelecaoAlternativa.Parameters.AddWithValue("NUMERO", id);
+
+            SqlDataReader leitorAlternativa = comandoSelecaoAlternativa.ExecuteReader();
+            Dictionary<string, bool> dic = new();
+
+
+            dic = ConverterParaAlternativas(leitorAlternativa);
+            return dic;
+        }
+
+
+        private Dictionary<string, bool> ConverterParaAlternativas(SqlDataReader leitorAlternativa)
+        {
+            Dictionary<string, bool> dic = new Dictionary<string, bool>();
+
+
+
+            while (leitorAlternativa.Read())
+            {
+                string titulo = Convert.ToString(leitorAlternativa["TITULO"]);
+
+                bool certo = Convert.ToBoolean(leitorAlternativa["CORRETA"]);
+
+                dic.Add(titulo, certo);
+            }
+
+            return dic;
+        }
+
+
+
+
         public List<Teste> SelecionarTodos()
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarTodos, conexaoComBanco);
+
+            SqlCommand comandoPegarQuestao = new SqlCommand(sqlSelecionarQuestoes, conexaoComBanco);
 
             conexaoComBanco.Open();
             SqlDataReader leitor = comandoSelecao.ExecuteReader();
@@ -174,7 +295,19 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 
             while (leitor.Read())
             {
-                Teste registro = ConverterParaRegistro(leitor);
+                Teste registro = ConverterParaRegistro  (leitor);
+
+
+                comandoPegarQuestao.Parameters.AddWithValue("NUMERO", registro.Numero);
+
+                SqlDataReader leitor2 = comandoPegarQuestao.ExecuteReader();
+
+                while (leitor2.Read())
+                    registro.Questoes.Add(ConverterParaQuestao(leitor2, conexaoComBanco));
+                
+
+                leitor2.Close();
+                comandoPegarQuestao.Parameters.Clear();
 
                 registros.Add(registro);
             }
@@ -190,6 +323,8 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 
             SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarPorID, conexaoComBanco);
 
+            SqlCommand comandoPegarQuestao = new SqlCommand(sqlSelecionarQuestoes, conexaoComBanco);
+
             comandoSelecao.Parameters.AddWithValue("NUMERO", Numero);
 
             conexaoComBanco.Open();
@@ -198,6 +333,16 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
             Teste registro = null;
             if (leitor.Read())
                 registro = ConverterParaRegistro(leitor);
+
+
+            comandoPegarQuestao.Parameters.AddWithValue("NUMERO", registro.Numero);
+
+            SqlDataReader leitor2 = comandoPegarQuestao.ExecuteReader();
+
+            while (leitor2.Read())
+                registro.Questoes.Add(ConverterParaQuestao(leitor2, conexaoComBanco));
+
+
 
             conexaoComBanco.Close();
 
@@ -248,7 +393,6 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
                 Disciplina = discplina,
                 Materia = materia,
             };
-
             return teste;
         }
 
@@ -267,5 +411,15 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
             comando.Parameters.AddWithValue("NUMEROQUESTOES", novoRegistro.NumeroQuestoes);
             comando.Parameters.AddWithValue("DATA", novoRegistro.Data);
         }
+
+        private void ConfigurarParametrosQuestao(Questao questao,Teste novoRegistro, SqlCommand comando)
+        {
+            comando.Parameters.AddWithValue("NUMERO_TESTE", novoRegistro.Numero);
+            comando.Parameters.AddWithValue("NUMERO_QUESTAO", questao.Numero);
+        }
+        
+
+
+
     }
 }

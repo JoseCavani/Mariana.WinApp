@@ -42,9 +42,14 @@ namespace Mariana.WinApp.ModuloTeste
 
                 txtTitulo.Text = teste.Titulo;
 
+                if (teste.Disciplina != null)
                 comboBoxDisciplina.SelectedItem = disciplinas.Where(x => x.Numero == teste.Disciplina.Numero).Single();
 
+
+                if(teste.Materia != null)
                 comboBoxMateria.SelectedItem = teste.Materia;
+
+
                 if (teste.Materia == null)
                     comboBoxMateria.SelectedIndex = 0;
 

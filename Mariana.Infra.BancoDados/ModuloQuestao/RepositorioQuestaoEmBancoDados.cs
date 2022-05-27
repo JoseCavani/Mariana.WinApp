@@ -210,6 +210,7 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
             {
                 Questao registro = ConverterParaRegistro(leitor, conexaoComBanco);
 
+
                 registros.Add(registro);
             }
 
@@ -320,18 +321,6 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         public List<Materia> Materias(Disciplina discplina)
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
@@ -385,9 +374,6 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
             comando.Parameters.AddWithValue("MATERIA_NUMERO", novoRegistro.materia.Numero);
         }
 
-        public void AdicionarAlternativas(Questao questao)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
