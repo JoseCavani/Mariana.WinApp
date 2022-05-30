@@ -151,6 +151,8 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
 
             SqlCommand comandoEdicaoAlternativas = new SqlCommand(sqlEditarAlternativas, conexaoComBanco);
 
+            SqlCommand commandoInserirAlterntavisa = new SqlCommand(sqlInserirAlternativa, conexaoComBanco);
+
             ConfigurarParametros(novoRegistro, comandoEdicao);
 
             conexaoComBanco.Open();
@@ -167,6 +169,12 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
                        comandoEdicaoAlternativas.ExecuteNonQuery();
                     comandoEdicaoAlternativas.Parameters.Clear();
 
+                }
+                else
+                {
+                    ConfigurarParametrosAlternativas(item, commandoInserirAlterntavisa, novoRegistro);
+                    commandoInserirAlterntavisa.ExecuteNonQuery();
+                    commandoInserirAlterntavisa.Parameters.Clear();
                 }
                 reader.Close();
                 reader.Dispose();
