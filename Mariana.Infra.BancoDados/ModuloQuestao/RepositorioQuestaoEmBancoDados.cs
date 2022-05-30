@@ -120,6 +120,7 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
             {
                 ConfigurarParametrosAlternativas(item, comandoInsercaoAlternativas, novoRegistro);
                 comandoInsercaoAlternativas.ExecuteNonQuery();
+                comandoInsercaoAlternativas.Parameters.Clear();
             }
 
         
