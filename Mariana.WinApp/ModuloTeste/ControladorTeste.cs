@@ -111,6 +111,10 @@ namespace Mariana.WinApp.ModuloTeste
 
             tela.numericUpDownQuantidade.Enabled = false;
 
+            tela.comboBoxDisciplina.Enabled = false;
+
+            tela.comboBoxMateria.Enabled = false;
+
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)

@@ -22,7 +22,7 @@ namespace Mariana.WinApp.ModuloMateria
         {
             InitializeComponent();
             comboBoxDisciplina.Items.AddRange(disciplinas.ToArray());
-            comboBoxDisciplina.SelectedIndex = 0;
+            //comboBoxDisciplina.SelectedIndex = 0;
         }
 
         public Func<Materia, ValidationResult> GravarRegistro { get; set; }
