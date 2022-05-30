@@ -76,7 +76,7 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 		            [TBTESTE] AS T INNER JOIN
 					[TBDisciplina] AS D 
 					ON
-					D.Id = T.Discplina_id INNER JOIN
+					D.Id = T.Discplina_id LEFT JOIN
                     [TBMateria] AS M
                     ON
                     T.[Materia_Numero] = M.Numero";
@@ -167,8 +167,7 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
                 ConfigurarParametrosQuestao(item,novoRegistro,InserirQuestoes);
 
                 InserirQuestoes.ExecuteScalar();
-
-
+                InserirQuestoes.Parameters.Clear();
 
             }
 
