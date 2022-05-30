@@ -146,7 +146,7 @@ namespace Mariana.Infra.BancoDados.ModuloMateria
             }
             catch (System.Data.SqlClient.SqlException)
             {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "existe teste com essa materia"));
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "existe teste  ou questao com essa materia"));
             }
 
 

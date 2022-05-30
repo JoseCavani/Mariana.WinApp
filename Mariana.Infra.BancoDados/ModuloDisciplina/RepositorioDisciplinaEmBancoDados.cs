@@ -140,19 +140,44 @@ namespace Mariana.Infra.BancoDados.ModuloDisciplina
 
         public ValidationResult Excluir(Disciplina novoRegistro)
         {
+            var resultadoValidacao = new ValidationResult();
+
+
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
             SqlCommand comandoExclusao = new SqlCommand(sqlExcluir, conexaoComBanco);
 
             comandoExclusao.Parameters.AddWithValue("ID", novoRegistro.Numero);
 
-            conexaoComBanco.Open();
-            int IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
 
-            var resultadoValidacao = new ValidationResult();
+
+
+
+
+            conexaoComBanco.Open();
+
+
+            var sqlCommand = new SqlCommand("SELECT * FROM TBMATERIA WHERE ([DISCPLINA_ID] = '" + novoRegistro.Numero + "')", conexaoComBanco);
+
+
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                resultadoValidacao.Errors.Add(new ValidationFailure("", "Existe materias com essa discplina"));
+
+            }
+            reader.Close();
+            reader.Dispose();
+
+
+
+            if (resultadoValidacao.Errors.Count == 0)
+            { 
+            int IDRegistrosExcluidos = comandoExclusao.ExecuteNonQuery();
 
             if (IDRegistrosExcluidos == 0)
                 resultadoValidacao.Errors.Add(new ValidationFailure("", "Não foi possível remover o registro"));
+        }
 
             conexaoComBanco.Close();
 

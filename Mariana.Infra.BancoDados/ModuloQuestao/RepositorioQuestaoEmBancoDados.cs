@@ -85,7 +85,12 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
                     @QUESTAO_NUMERO
                 );";
 
-
+        private const string sqlEditarAlternativas =
+          @"UPDATE [TBALTERNATIVAS]	
+		        SET
+                    [CORRETA] = @CORRETA
+		        WHERE
+			        [TITULO] = @TITULO";
 
 
 
@@ -143,7 +148,7 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
 
             SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
 
-            SqlCommand comandoInsercaoAlternativas = new SqlCommand(sqlInserirAlternativa, conexaoComBanco);
+            SqlCommand comandoEdicaoAlternativas = new SqlCommand(sqlEditarAlternativas, conexaoComBanco);
 
             ConfigurarParametros(novoRegistro, comandoEdicao);
 
@@ -155,10 +160,11 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
             
 
                 SqlDataReader reader = sqlCommand.ExecuteReader();
-                if (!reader.HasRows)
+                if (reader.HasRows)
                 {
-                        ConfigurarParametrosAlternativas(item, comandoInsercaoAlternativas, novoRegistro);
-                        comandoInsercaoAlternativas.ExecuteNonQuery();
+                        ConfigurarParametrosAlternativas(item, comandoEdicaoAlternativas, novoRegistro);
+                       comandoEdicaoAlternativas.ExecuteNonQuery();
+                    comandoEdicaoAlternativas.Parameters.Clear();
 
                 }
                 reader.Close();
@@ -246,8 +252,16 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
             int id = Convert.ToInt32(leitor["NUMERO"]);
             string titulo = Convert.ToString(leitor["TITULO"]);
             int bimestre = Convert.ToInt32(leitor["BIMESTRE"]);
+            int materiaNumero = Convert.ToInt32(leitor["MATERIA_NUMERO"]);
 
             Dictionary<string, bool> dic = ReceberAlternativas(conexaoComBanco, id);
+
+
+
+            var materia = new Materia
+            {
+                Numero = materiaNumero,
+            };
 
             var Questao = new Questao
             {
@@ -255,6 +269,7 @@ namespace Mariana.Infra.BancoDados.ModuloQuestao
                 Titulo = titulo,
                 bimestre = bimestre,
                 opcoes = dic,
+                materia = materia,
             };
 
 

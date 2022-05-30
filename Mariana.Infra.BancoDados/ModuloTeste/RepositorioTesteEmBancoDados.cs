@@ -98,7 +98,7 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 		            [TBTESTE] AS T INNER JOIN
 					[TBDisciplina] AS D 
 					ON
-					D.Id = T.Discplina_id   INNER JOIN
+					D.Id = T.Discplina_id  LEFT JOIN
                     [TBMateria] AS M
                     ON
                     T.[Materia_Numero] = M.Numero
@@ -346,17 +346,17 @@ namespace Mariana.Infra.BancoDados.ModuloTeste
 
             Teste registro = null;
             if (leitor.Read())
+            {
                 registro = ConverterParaRegistro(leitor);
 
+                comandoPegarQuestao.Parameters.AddWithValue("NUMERO", registro.Numero);
 
-            comandoPegarQuestao.Parameters.AddWithValue("NUMERO", registro.Numero);
+                SqlDataReader leitor2 = comandoPegarQuestao.ExecuteReader();
 
-            SqlDataReader leitor2 = comandoPegarQuestao.ExecuteReader();
+                while (leitor2.Read())
+                    registro.Questoes.Add(ConverterParaQuestao(leitor2, conexaoComBanco));
 
-            while (leitor2.Read())
-                registro.Questoes.Add(ConverterParaQuestao(leitor2, conexaoComBanco));
-
-
+            }
 
             conexaoComBanco.Close();
 
