@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mariana.Dominio", "Mariana.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mariana.Infra.Arquivos", "Mariana.Infra.Arquivos\Mariana.Infra.Arquivos.csproj", "{CBD5034D-926A-484F-8187-2D24FD5D1AE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mariana.Infra.BancoDados", "Mariana.Infra.BancoDados\Mariana.Infra.BancoDados.csproj", "{E62376F1-249A-423A-A067-244783C98D77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mariana.Infra.BancoDados", "Mariana.Infra.BancoDados\Mariana.Infra.BancoDados.csproj", "{E62376F1-249A-423A-A067-244783C98D77}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Bd.projeto.BancoDeDados", "Bd.projeto.BancoDeDados\Bd.projeto.BancoDeDados.sqlproj", "{2F60CC42-F73F-4669-89B1-F0EA2B985962}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{E62376F1-249A-423A-A067-244783C98D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E62376F1-249A-423A-A067-244783C98D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E62376F1-249A-423A-A067-244783C98D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F60CC42-F73F-4669-89B1-F0EA2B985962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F60CC42-F73F-4669-89B1-F0EA2B985962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F60CC42-F73F-4669-89B1-F0EA2B985962}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2F60CC42-F73F-4669-89B1-F0EA2B985962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F60CC42-F73F-4669-89B1-F0EA2B985962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F60CC42-F73F-4669-89B1-F0EA2B985962}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
